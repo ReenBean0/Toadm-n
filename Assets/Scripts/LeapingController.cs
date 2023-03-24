@@ -4,56 +4,71 @@ using UnityEngine;
 
 public class LeapingController : MonoBehaviour
 {
+    bool LeapMode = false, startLeap = false;
     float leapingSpeed = 0.005f;
     Vector2 mouseOriginPos, mouseCurrentPos;
+    Vector3 posChecker;
     // Start is called before the first frame update
     void Start()
     {
-
+        posChecker = transform.position;
+    }
+    private void OnMouseDown()
+    {
+        //if player press the toadman
+        if (!startLeap)
+        {
+            LeapMode = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        Debug.Log("Pos diff" + (posChecker - transform.position));
+        if (posChecker == transform.position)
         {
-            mouseOriginPos = Input.mousePosition;
-            Debug.Log("Left click down");
+            startLeap = false;
         }
-        else if (Input.GetMouseButtonUp(0))
+        else
         {
-            //Launch
-            StartCoroutine(Launch());
-            Debug.Log("Left click up");
+            startLeap = true;
         }
-        else if (Input.GetMouseButton(0))
+        if (LeapMode)
         {
-            mouseCurrentPos = Input.mousePosition;
-            Debug.Log("Left click holding");
-        }
-    }
-    IEnumerator Launch()
-    {
-        Vector3 originScale = transform.localScale;
-        Vector3 newScale = originScale;
-        //range between 100~300
-        //Debug.Log(Vector2.Distance(mouseOriginPos, mouseCurrentPos));
-        float mouseDistance = Vector2.Distance(mouseOriginPos, mouseCurrentPos);
-        //start launch if drag distance reach 100
-        if (mouseDistance > 100)
-        {
-            if (mouseDistance > 300)
+            if (Input.GetMouseButtonDown(0))
             {
-                //biggest distance of drag set to 300 distance
-                mouseDistance = 300;
+                mouseOriginPos = Input.mousePosition;
+                Debug.Log("Left click down");
             }
-            mouseDistance /= 100;
-            Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
-            //X value start from 100
-            //Y value start from 50
-            //Debug.Log(posDiff);
-            GetComponent<Rigidbody>().AddForce(posDiff * mouseDistance);
+            else if (Input.GetMouseButtonUp(0))
+            {
+                LeapMode = false;
+                //Launch
+                //range between 100~300
+                //Debug.Log(Vector2.Distance(mouseOriginPos, mouseCurrentPos));
+                float mouseDistance = Vector2.Distance(mouseOriginPos, mouseCurrentPos);
+                //start launch if drag distance reach 100
+                if (mouseDistance > 100)
+                {
+                    if (mouseDistance > 300)
+                    {
+                        //biggest distance of drag set to 300 distance
+                        mouseDistance = 300;
+                    }
+                    float dragPower = mouseDistance / 100;
+                    Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
+                    //Debug.Log(posDiff);
+                    GetComponent<Rigidbody>().AddForce(posDiff * dragPower);
+                }
+                Debug.Log("Left click up");
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                mouseCurrentPos = Input.mousePosition;
+                Debug.Log("Left click holding");
+            }
         }
-        yield return null;
+        posChecker = transform.position;
     }
 }
