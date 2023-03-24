@@ -5,11 +5,10 @@ using UnityEngine;
 public class FlyController : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed; //degrees per second
+    [SerializeField] private float moveSpeed;
+    public CircleCollider2D radius;
 
-    private void Start()
-    {
-        rotateSpeed = 60f;
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -17,10 +16,13 @@ public class FlyController : MonoBehaviour
         //constant rotation of flies on the z axis
         this.transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
 
-        //captures mouse position
-        Vector3 cursorPosition = Input.mousePosition;
-        //translate mouse position to game world position
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(cursorPosition);
-        this.transform.position = worldPosition;
+
+        float xMovement = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        float yMovement = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
+
+        this.transform.Translate(xMovement, yMovement, 0, Space.World);
+
+      //Physics2D.OverlapCollider(radius,)
+
     }
 }
