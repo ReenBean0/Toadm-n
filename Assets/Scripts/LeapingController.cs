@@ -47,28 +47,12 @@ public class LeapingController : MonoBehaviour
                 //biggest distance of drag set to 300 distance
                 mouseDistance = 300;
             }
+            mouseDistance /= 100;
             Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
-            Vector3 newPos = transform.position + posDiff / 50;
             //X value start from 100
             //Y value start from 50
             //Debug.Log(posDiff);
-            if (posDiff.x >= 0)
-            {
-                //to right
-                transform.position = newPos;
-            }
-            else if (posDiff.x < 0)
-            {
-                //to left
-            }
-            if (posDiff.y >= 0)
-            {
-                //to up
-            }
-            else if (posDiff.y < 0)
-            {
-                //to down
-            }
+            GetComponent<Rigidbody>().AddForce(posDiff * mouseDistance);
         }
         yield return null;
     }
