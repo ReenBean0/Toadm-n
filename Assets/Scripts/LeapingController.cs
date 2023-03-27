@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LeapingController : MonoBehaviour
 {
+    public float minDistance = 100;//Minimum distance needed to launch a leap
+    public float maxDistance = 300;//Maximum distance for max force to lauch the leap
+    public float forceScale = 100;//Scale to divide distance to resonable force to leap
     bool LeapMode = false, startLeap = false;
-    float leapingSpeed = 0.005f;
     Vector2 mouseOriginPos, mouseCurrentPos;
     Vector3 posChecker;
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class LeapingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Pos diff" + (posChecker - transform.position));
+        //Debug.Log("Pos diff" + (posChecker - transform.position));
         if (posChecker == transform.position)
         {
             startLeap = false;
@@ -39,34 +41,34 @@ public class LeapingController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 mouseOriginPos = Input.mousePosition;
-                Debug.Log("Left click down");
+                //Debug.Log("Left click down");
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                LeapMode = false;
                 //Launch
                 //range between 100~300
                 //Debug.Log(Vector2.Distance(mouseOriginPos, mouseCurrentPos));
                 float mouseDistance = Vector2.Distance(mouseOriginPos, mouseCurrentPos);
-                //start launch if drag distance reach 100
-                if (mouseDistance > 100)
+                //start launch if drag distance reach minimum accept distance
+                if (mouseDistance > minDistance)
                 {
-                    if (mouseDistance > 300)
+                    LeapMode = false;
+                    if (mouseDistance > maxDistance)
                     {
-                        //biggest distance of drag set to 300 distance
-                        mouseDistance = 300;
+                        //set player drag distance to max if more than acceptable
+                        mouseDistance = maxDistance;
                     }
-                    float dragPower = mouseDistance / 100;
+                    float dragPower = mouseDistance / forceScale;
                     Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
                     //Debug.Log(posDiff);
                     GetComponent<Rigidbody>().AddForce(posDiff * dragPower);
                 }
-                Debug.Log("Left click up");
+                //Debug.Log("Left click up");
             }
             else if (Input.GetMouseButton(0))
             {
                 mouseCurrentPos = Input.mousePosition;
-                Debug.Log("Left click holding");
+                //Debug.Log("Left click holding");
             }
         }
         posChecker = transform.position;
