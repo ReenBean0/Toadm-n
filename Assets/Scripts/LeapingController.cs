@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeapingController : MonoBehaviour
 {
-    public float minDistance = 100;//Minimum distance needed to launch a leap
-    public float maxDistance = 300;//Maximum distance for max force to lauch the leap
-    public float forceScale = 100;//Scale to divide distance to resonable force to leap
+    float minDistance = 100;//Minimum distance needed to launch a leap
+    float maxDistance = 300;//Maximum distance for max force to lauch the leap
+    float forceScale = 200;//Scale to divide distance to resonable force to leap
     bool LeapMode = false, startLeap = false;
     Vector2 mouseOriginPos, mouseCurrentPos;
-    Vector3 posChecker;
+    Vector3 posChecker, originPos;
+    LineRender lineRender;
+    GameObject playerInputLine;
     // Start is called before the first frame update
     void Start()
     {
         posChecker = transform.position;
+        originPos= transform.position;
+        playerInputLine = transform.GetChild(0).gameObject;
+        lineRender = playerInputLine.GetComponent<LineRender>();
     }
     private void OnMouseDown()
     {
@@ -38,9 +44,11 @@ public class LeapingController : MonoBehaviour
         }
         if (LeapMode)
         {
+            originPos= transform.position;
             if (Input.GetMouseButtonDown(0))
             {
                 mouseOriginPos = Input.mousePosition;
+                //mouseOriginPos=Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 //Debug.Log("Left click down");
             }
             else if (Input.GetMouseButtonUp(0))
@@ -68,8 +76,18 @@ public class LeapingController : MonoBehaviour
             else if (Input.GetMouseButton(0))
             {
                 mouseCurrentPos = Input.mousePosition;
+                /*
+                mouseCurrentPos=Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                lineRender.SetPosition(0, new Vector3(mouseOriginPos.x,mouseOriginPos.y,0));
+                lineRender.SetPosition(1, new Vector3(mouseCurrentPos.x,mouseCurrentPos.y,0));
+                */
                 //Debug.Log("Left click holding");
             }
+        }
+        if (transform.position.y < -5)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            transform.position = originPos;
         }
         posChecker = transform.position;
     }
