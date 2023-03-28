@@ -59,9 +59,9 @@ public class LeapingController : MonoBehaviour
                         mouseDistance = maxDistance;
                     }
                     float dragPower = mouseDistance / forceScale;
-                    Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
+                    Vector2 posDiff = mouseOriginPos - mouseCurrentPos;
                     //Debug.Log(posDiff);
-                    GetComponent<Rigidbody>().AddForce(posDiff * dragPower);
+                    GetComponent<Rigidbody2D>().AddForce(posDiff * dragPower);
                 }
                 //Debug.Log("Left click up");
             }
