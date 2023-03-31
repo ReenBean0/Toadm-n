@@ -18,12 +18,21 @@ public class LeapingController : MonoBehaviour
     void Start()
     {
         posChecker = transform.position;
-        toadRigi = GetComponent<Rigidbody2D>();
-        playerInputLine = transform.GetChild(0).gameObject;
+        #region create player line
+        playerInputLine = new GameObject("playerInputLine");
+        playerInputLine.transform.parent = transform;
+        playerInputLine.AddComponent<LineRenderer>();
         lineRender = playerInputLine.GetComponent<LineRenderer>();
+        lineRender.startWidth = 0.2f;
+        lineRender.endWidth = 0.8f;
         lineRender.SetPosition(0, Vector3.zero);
         lineRender.SetPosition(1, Vector3.zero);
+        lineRender.material = new Material(Shader.Find("Sprites/Default"));
+        lineRender.startColor = new Color(255, 226, 0);
+        lineRender.endColor = new Color(255, 0, 0);
+        #endregion
         //init rigibody value
+        toadRigi = GetComponent<Rigidbody2D>();
         toadRigi.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     private void OnMouseDown()
