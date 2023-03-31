@@ -23,8 +23,9 @@ public class LeapingController : MonoBehaviour
         lineRender.SetPosition(0, Vector3.zero);
         lineRender.SetPosition(1, Vector3.zero);
         //init rigibody value
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
-        GetComponent<Rigidbody>().freezeRotation = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+        //GetComponent<Rigidbody>().freezeRotation = true;
     }
     private void OnMouseDown()
     {
@@ -39,9 +40,9 @@ public class LeapingController : MonoBehaviour
     {
         //set the max power of leap can do
         float maxSpeed = 10;
-        if (GetComponent<Rigidbody>().velocity.magnitude > maxSpeed)
+        if (GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
         {
-            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxSpeed;
+            GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity.normalized * maxSpeed;
         }
     }
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class LeapingController : MonoBehaviour
                     float dragPower = mouseDistance * forceScale;
                     Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
                     //Debug.Log(posDiff);
-                    GetComponent<Rigidbody>().AddForce(posDiff * dragPower);
+                    GetComponent<Rigidbody2D>().AddForce(posDiff * dragPower);
                 }
                 //Debug.Log("Left click up");
             }
@@ -107,7 +108,7 @@ public class LeapingController : MonoBehaviour
         //reset position to before leap if fall below platform
         if (transform.position.y < -5)
         {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             transform.position = originPos;
         }
         //update position to check if it is moving
