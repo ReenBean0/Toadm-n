@@ -26,7 +26,7 @@ public class TongueController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //flyTransform = flyCursor.GetComponent<Transform>();
+        flyTransform = flyCursor.GetComponent<Transform>();
         tongueCooldown = false;
     }
 
@@ -35,16 +35,17 @@ public class TongueController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !tongueCooldown)
         {
-            //flyX = flyTransform.position.x;
-            //flyY = flyTransform.position.y;
-            //Debug.Log($"Launch tongue at X={flyX}, y={flyY}");
+            flyX = flyTransform.position.x;
+            flyY = flyTransform.position.y;
+            Debug.Log($"Launch tongue at X={flyX}, y={flyY}");
 
             // Temporarily use mouse position
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            Debug.Log($"Launch tongue at X={mousePosition.x}, y={mousePosition.y}");
+            //Vector3 mousePosition = Input.mousePosition;
+            //mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            //Debug.Log($"Launch tongue at X={mousePosition.x}, y={mousePosition.y}");
 
-            LaunchTongue(mousePosition);
+            Vector3 tongueDestination = new Vector3(flyX, flyY, 1);
+            LaunchTongue(tongueDestination);
         }
     }
 
