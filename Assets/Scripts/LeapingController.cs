@@ -9,30 +9,29 @@ public class LeapingController : MonoBehaviour
     float maxDistance = 2f;//Maximum distance for max force to lauch the leap
     float forceScale = 50;//Scale to multiply distance to resonable force to leap
     bool LeapMode = false, startLeap = false;
+    Rigidbody2D toadRigi;
     Vector2 mouseOriginPos, mouseCurrentPos;
-    Vector3 posChecker, originPos;
+    Vector3 posChecker;
     LineRenderer lineRender;
     GameObject playerInputLine;
     // Start is called before the first frame update
     void Start()
     {
         posChecker = transform.position;
-        originPos= transform.position;
+        toadRigi = GetComponent<Rigidbody2D>();
         playerInputLine = transform.GetChild(0).gameObject;
         lineRender = playerInputLine.GetComponent<LineRenderer>();
         lineRender.SetPosition(0, Vector3.zero);
         lineRender.SetPosition(1, Vector3.zero);
         //init rigibody value
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
-        //GetComponent<Rigidbody>().freezeRotation = true;
+        toadRigi.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     private void OnMouseDown()
     {
         //if player press the toadman
         if (!startLeap)
         {
-            originPos = transform.position;
+            GetComponent<ToadRespawn>().SavePosition(transform.position);
             LeapMode = true;
         }
     }
@@ -40,9 +39,9 @@ public class LeapingController : MonoBehaviour
     {
         //set the max power of leap can do
         float maxSpeed = 10;
-        if (GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
+        if (toadRigi.velocity.magnitude > maxSpeed)
         {
-            GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity.normalized * maxSpeed;
+            toadRigi.velocity = toadRigi.velocity.normalized * maxSpeed;
         }
     }
     // Update is called once per frame
@@ -71,7 +70,7 @@ public class LeapingController : MonoBehaviour
             {
                 //Launch
                 //range between 100~300
-                Debug.Log(Vector2.Distance(mouseOriginPos, mouseCurrentPos));
+                //Debug.Log(Vector2.Distance(mouseOriginPos, mouseCurrentPos));
                 float mouseDistance = Vector2.Distance(mouseOriginPos, mouseCurrentPos);
                 //start launch if drag distance reach minimum accept distance
                 if (mouseDistance > minDistance)
@@ -82,11 +81,11 @@ public class LeapingController : MonoBehaviour
                         //set player drag distance to max if more than acceptable
                         mouseDistance = maxDistance;
                     }
-                    Debug.Log("mouseDistance="+ mouseDistance);
+                    //Debug.Log("mouseDistance="+ mouseDistance);
                     float dragPower = mouseDistance * forceScale;
                     Vector3 posDiff = mouseOriginPos - mouseCurrentPos;
                     //Debug.Log(posDiff);
-                    GetComponent<Rigidbody2D>().AddForce(posDiff * dragPower);
+                    toadRigi.AddForce(posDiff * dragPower);
                 }
                 //Debug.Log("Left click up");
             }
@@ -104,12 +103,6 @@ public class LeapingController : MonoBehaviour
 
                 //Debug.Log("Left click holding");
             }
-        }
-        //reset position to before leap if fall below platform
-        if (transform.position.y < -5)
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            transform.position = originPos;
         }
         //update position to check if it is moving
         posChecker = transform.position;
