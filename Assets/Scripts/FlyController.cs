@@ -16,13 +16,12 @@ public class FlyController : MonoBehaviour
         //constant rotation of flies on the z axis
         this.transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
 
-
+        //Horizontal axis = Left and Right arrow keys + A key and D key
         float xMovement = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        //Vertical axis = Up and Down arrow keys + W key and S key
         float yMovement = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
-
+        //moves the flies
         this.transform.Translate(xMovement, yMovement, 0, Space.World);
-
-      //Physics2D.OverlapCollider(radius,)
 
     }
 }
