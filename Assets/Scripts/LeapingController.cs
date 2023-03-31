@@ -69,12 +69,15 @@ public class LeapingController : MonoBehaviour
         //if player press the toadman
         if (LeapMode)
         {
+            #region left click down
             if (Input.GetMouseButtonDown(0))
             {
                 //mouseOriginPos = Input.mousePosition;
                 mouseOriginPos=Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 //Debug.Log("Left click down");
             }
+            #endregion
+            #region left click up
             else if (Input.GetMouseButtonUp(0))
             {
                 //Launch
@@ -98,6 +101,8 @@ public class LeapingController : MonoBehaviour
                 }
                 //Debug.Log("Left click up");
             }
+            #endregion
+            #region holding left click
             else if (Input.GetMouseButton(0))
             {
                 //mouseCurrentPos = Input.mousePosition;
@@ -112,6 +117,7 @@ public class LeapingController : MonoBehaviour
 
                 //Debug.Log("Left click holding");
             }
+            #endregion
         }
         //update position to check if it is moving
         posChecker = transform.position;
