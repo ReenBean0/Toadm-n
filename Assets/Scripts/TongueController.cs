@@ -52,7 +52,8 @@ public class TongueController : MonoBehaviour
     void LaunchTongue(Vector3 targetPos)
     {
         // Spawn tongue
-        tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y, 1), Quaternion.identity);
+        //tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y, 1), Quaternion.identity);
+        tongueInstance = Instantiate(tonguePrefab, transform.position, Quaternion.identity);
 
         // Rotate tongue to face target point
         Vector3 direction = targetPos - transform.position;
