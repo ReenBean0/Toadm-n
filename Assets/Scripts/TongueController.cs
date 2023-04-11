@@ -23,6 +23,9 @@ public class TongueController : MonoBehaviour
 
     GameObject tongueInstance;
 
+    //added for moveable objects by Yin
+    bool reverse = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +93,13 @@ public class TongueController : MonoBehaviour
 
         // Wait before reversing animation
         yield return new WaitForSeconds(animationPauseBeforeReversing);
+        //yield return StartCoroutine(AnimateTongueReverse(tongue));
+        //added for moveable objects by Yin
+        while (!reverse)
+        {
+            //if touch a moveable object
+            yield return null;
+        }
         yield return StartCoroutine(AnimateTongueReverse(tongue));
     }
 
@@ -114,5 +124,18 @@ public class TongueController : MonoBehaviour
         // Be gone foul tongue
         Destroy(tongue);
         tongueCooldown = false;
+    }
+    //added for moveable objects by Yin
+    public void TriggerMoveableObject()
+    {
+        reverse = false;
+    }
+    public void FinishMoveableObject()
+    {
+        reverse = true;
+    }
+    public void ChangeTonguePosition(float xMovement, float yMovement)
+    {
+
     }
 }

@@ -260,9 +260,9 @@ GameObject:
   - component: {fileID: 684768421}
   - component: {fileID: 684768420}
   - component: {fileID: 684768423}
+  - component: {fileID: 684768426}
   - component: {fileID: 684768425}
   - component: {fileID: 684768424}
-  - component: {fileID: 684768426}
   m_Layer: 0
   m_Name: Toadman
   m_TagString: Untagged
@@ -744,33 +744,13 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 786584512}
     m_Modifications:
-    - target: {fileID: -4721517471263620467, guid: 93305e89bd8cc6e469726f34c0b4331e, type: 3}
-      propertyPath: m_Size.x
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: -4721517471263620467, guid: 93305e89bd8cc6e469726f34c0b4331e, type: 3}
-      propertyPath: m_Size.y
-      value: 2.55
-      objectReference: {fileID: 0}
+    - target: {fileID: -3172401337587236846, guid: 93305e89bd8cc6e469726f34c0b4331e, type: 3}
+      propertyPath: toad
+      value: 
+      objectReference: {fileID: 684768419}
     - target: {fileID: 75305341795513885, guid: 93305e89bd8cc6e469726f34c0b4331e, type: 3}
       propertyPath: m_Name
       value: Placeholder_MoveableObjects
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.x
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.y
-      value: 2.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Center.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4598911786316097883, guid: 93305e89bd8cc6e469726f34c0b4331e, type: 3}
       propertyPath: m_RootOrder
