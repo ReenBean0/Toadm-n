@@ -4,7 +4,5 @@ using UnityEngine;
 
 public interface IActivatableObject
 {
-    public abstract void InteractOn();
-
-    public abstract void InteractOff();
+    public void Interact();
 }

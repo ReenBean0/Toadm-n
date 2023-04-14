@@ -4,6 +4,13 @@ using UnityEngine;
 
 /// <summary>
 /// This class is used for interactable objects that behave as buttons or switches
+/// How to use:
+///  - This script goes on the switch or button
+///  - if isSwitch, object can be toggled on and off by player
+///  - if not isSwitch, object is toggled on by player, toggled off by timer
+///  - Determine which objects are activated by this switch / button with the rising edge and falling edge arrays
+///  - Rising edge: the objects that will be activated when the switch / button is toggled on
+///  - Falling edge: the objects that will be activated when the switch / button is toggled off
 /// - Henry Paul
 /// </summary>
 public class InteractableDevice : MonoBehaviour
@@ -33,7 +40,7 @@ public class InteractableDevice : MonoBehaviour
     {
         foreach (GameObject gameObject in fallingEdgeTargetObjects)
         {
-            gameObject.GetComponent<IActivatableObject>().InteractOff();
+            gameObject.GetComponent<IActivatableObject>().Interact();
         }
         status = "OFF";
     }
@@ -43,7 +50,7 @@ public class InteractableDevice : MonoBehaviour
     {
         foreach (GameObject gameObject in risingEdgeTargetObjects)
         {
-            gameObject.GetComponent<IActivatableObject>().InteractOn();
+            gameObject.GetComponent<IActivatableObject>().Interact();
         }
         status = "ON";
     }
