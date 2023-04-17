@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Camera camera;
-    [SerializeField] List<GameObject> cameraBounds = new List<GameObject>();
+    [SerializeField] GameObject startingBound;
     [SerializeField] GameObject toad;
     [SerializeField] float targetSpeed;
 
@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentBound = cameraBounds[0].GetComponent<CameraBounds>();
+        currentBound = startingBound.GetComponent<CameraBounds>();
     }
 
     // This will be called by the camera bounds scripts when the toad collides with them

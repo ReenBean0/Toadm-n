@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class TestButton : MonoBehaviour, IActivatableObject
 {
-    Vector3 onPosition;
-    Vector3 onScale;
+    [SerializeField] Vector3 onPosition;
+    [SerializeField] Vector3 onScale;
 
-    Vector3 offPosition;
-    Vector3 offScale;
+    [SerializeField] Vector3 offPosition;
+    [SerializeField] Vector3 offScale;
 
     bool isOn;
 
     public void Start()
     {
         isOn = false;
-
-        onPosition = new Vector3(-6.5f, 2.8f, 0.0f);
-        onScale = new Vector3(0.5f, 0.170625f, 1);
-
-        offPosition = new Vector3(-6.5f, 2.55f, 0.0f);
-        offScale = new Vector3(0.5f, 0.35f, 1);
-
         InteractOff();
     }
 

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df231e38e7331fa4c875377429ea3d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamPos: {x: 0.5, y: 5.19, z: -25.4}
+  targetScale: 5
+  targetCamPos: {x: 0, y: 0, z: -8}
   gameManagerObject: {fileID: 0}
 --- !u!68 &2945914785980968279
 EdgeCollider2D:
