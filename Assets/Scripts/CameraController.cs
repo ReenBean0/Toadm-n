@@ -23,21 +23,25 @@ public class CameraController : MonoBehaviour
         if (cameraBounds != currentBound)
         {
             currentBound = cameraBounds;
-            StartCoroutine(AnimateCameraToPos(cameraBounds.TargetCamPos));
+            StartCoroutine(AnimateCameraToPos(cameraBounds.TargetCamPos, cameraBounds.TargetScale));
         }
     }
 
-    IEnumerator AnimateCameraToPos(Vector3 targetPosition)
+    IEnumerator AnimateCameraToPos(Vector3 targetPosition, float targetScale)
     {
         Debug.Log($"Move camera to: {targetPosition.x}, {targetPosition.y}, {targetPosition.z}");
         Transform camTransform = camera.GetComponent<Transform>();
 
         // Calculate distance and duration of animation
-        float distance = Vector3.Distance(camTransform.position, targetPosition);
-        float duration = (distance / targetSpeed) * 2;
+        float positionDistance = Vector3.Distance(camTransform.position, targetPosition);
+        float positionDuration = (positionDistance / targetSpeed) * 2;
+
+        // Calculate distance and duration of animation for scale
+        float scaleDistance = Mathf.Abs(camTransform.localScale.x - targetScale);
+        float scaleDuration = (scaleDistance / targetSpeed) * 2;
 
         float startTime = Time.time;
-        float endTime = startTime + duration;
+        float endTime = startTime + Mathf.Max(positionDuration, scaleDuration);
 
         while (Time.time < endTime)
         {
@@ -51,11 +55,16 @@ public class CameraController : MonoBehaviour
             // Move camera
             camTransform.position = Vector3.MoveTowards(camTransform.position, targetPosition, adjustedSpeed * Time.deltaTime);
 
+            // Adjust orhographic size based on animation progression
+            float adjustedScale = Mathf.Lerp(camera.orthographicSize, targetScale, Mathf.SmoothStep(0, 1, t));
+            camera.orthographicSize = adjustedScale;
+
             // Pause coroutine until next frame
             yield return null;
         }
 
         // Animation complete
         camTransform.position = targetPosition;
+        camera.orthographicSize = targetScale;
     }
 }

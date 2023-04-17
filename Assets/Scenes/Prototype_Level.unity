@@ -314,6 +314,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2539568999208393601, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
   m_PrefabInstance: {fileID: 1186405747}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &619716610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619716603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634c27917f745364fb528a206f2063cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &623013222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3414940098703930923, guid: 692c39ff36956744b8c616b88d638e35, type: 3}
@@ -397,16 +409,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1305938671}
     m_Modifications:
     - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
-      propertyPath: targetCamPos.x
-      value: 0.5
+      propertyPath: targetScale
+      value: 14.87
       objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: targetCamPos.y
-      value: 5.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
-      propertyPath: targetCamPos.z
-      value: -25.4
+      value: 9.99
       objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: gameManagerObject
@@ -469,6 +477,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1305938671}
     m_Modifications:
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: targetCamPos.y
       value: 10
@@ -538,6 +554,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 619716610, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393601, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_Name
       value: Toadman
@@ -548,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.12
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -754,7 +774,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -813,6 +833,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1305938671}
     m_Modifications:
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: targetCamPos.x
       value: 19
@@ -1248,6 +1276,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1305938671}
     m_Modifications:
+    - target: {fileID: 2945914785980968279, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968280, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: targetCamPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
+      propertyPath: targetCamPos.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968283, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: targetCamPos.z
       value: -8
