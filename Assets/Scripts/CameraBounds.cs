@@ -6,13 +6,12 @@ public class CameraBounds : MonoBehaviour
 {
     [SerializeField] float targetScale = 5;
     [SerializeField] Vector3 targetCamPos = new Vector3(0, 0, 0);
-    [SerializeField] GameObject gameManagerObject;
 
     CameraController cameraController;
 
     void Start()
     {
-        cameraController = gameManagerObject.GetComponent<CameraController>();
+        cameraController = GameManager.instance.GetComponent<CameraController>();
     }
 
     public Vector3 TargetCamPos
