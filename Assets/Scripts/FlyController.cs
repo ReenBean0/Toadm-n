@@ -6,7 +6,6 @@ public class FlyController : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed; //degrees per second
     [SerializeField] private float moveSpeed;
-    public CircleCollider2D radius;
 
 
 
