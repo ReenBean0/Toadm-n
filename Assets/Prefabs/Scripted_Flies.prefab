@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3414940098703930934
 SpriteRenderer:
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 60
   moveSpeed: 10
-  radius: {fileID: 0}
 --- !u!114 &3414940098703930932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
+  interactDelay: 0.5
   layerMask:
     serializedVersion: 2
     m_Bits: 64
