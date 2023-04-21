@@ -56,16 +56,32 @@ public class LeapingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, 1 << 7);
+
+        // If it hits something...
+        if (hit.collider != null)
+        {
+            // Calculate the distance from the surface and the "error" relative
+            // to the floating height.
+            float distance = Mathf.Abs(hit.point.y - transform.position.y);
+            Debug.Log(distance);
+            if (distance <= 0.9)
+            {
+                startLeap = false;
+            }
+            else startLeap = true;
+        }
+
         //Debug.Log("Pos diff" + (posChecker - transform.position));
         //if the object stop moving, enable checker for next leap
-        if (posChecker == transform.position)
-        {
-            startLeap = false;
-        }
-        else
-        {
-            startLeap = true;
-        }
+        //    if (posChecker == transform.position)
+        //{
+        //    startLeap = false;
+        //}
+        //else
+        //{
+        //    startLeap = true;
+        //}
         //if player press the toadman
         if (LeapMode)
         {
