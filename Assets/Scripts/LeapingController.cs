@@ -99,6 +99,8 @@ public class LeapingController : MonoBehaviour
                     //Debug.Log(posDiff);
                     toadRigi.AddForce(posDiff * dragPower);
                 }
+                lineRender.SetPosition(0,Vector3.zero);
+                lineRender.SetPosition(1, Vector3.zero);
                 //Debug.Log("Left click up");
             }
             #endregion
