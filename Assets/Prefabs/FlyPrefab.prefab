@@ -32,7 +32,7 @@ Transform:
   - {fileID: 5432007492970910048}
   - {fileID: 5432007493208206095}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5432007491876425795
 SpriteRenderer:
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5432007492970910048}
   - component: {fileID: 5432007492970910054}
-  - component: {fileID: 5432007492970910055}
+  - component: {fileID: 427202696}
   m_Layer: 0
   m_Name: le_flyLeftWing
   m_TagString: Untagged
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5432007492970910055
+--- !u!95 &427202696
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ Animator:
   m_GameObject: {fileID: 5432007492970910051}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 312d6093c7275eb41bca14798603178f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7a3508c6d7cc53949abe77f952c265ac, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5432007493208206095}
   - component: {fileID: 5432007493208206092}
-  - component: {fileID: 5432007493208206093}
+  - component: {fileID: 93275450}
   m_Layer: 0
   m_Name: le_flyRightWing
   m_TagString: Untagged
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5432007493208206093
+--- !u!95 &93275450
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ Animator:
   m_GameObject: {fileID: 5432007493208206094}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ec89137b22f0e49418b847f1afcec314, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5610b8fc59024c44bb50b5f24867196c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

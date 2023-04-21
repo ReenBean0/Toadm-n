@@ -220,31 +220,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &93275446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5432007493208206094, guid: ff25a5b57d9b3a145a402c380c7296b1, type: 3}
-  m_PrefabInstance: {fileID: 5432007491765789634}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &93275450
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93275446}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5610b8fc59024c44bb50b5f24867196c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &138211237
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,31 +446,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ff25a5b57d9b3a145a402c380c7296b1, type: 3}
---- !u!1 &427202692 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5432007492970910051, guid: ff25a5b57d9b3a145a402c380c7296b1, type: 3}
-  m_PrefabInstance: {fileID: 5432007491765789634}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &427202696
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427202692}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7a3508c6d7cc53949abe77f952c265ac, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &614894778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1480,9 +1430,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5432007492970910055, guid: ff25a5b57d9b3a145a402c380c7296b1, type: 3}
-    - {fileID: 5432007493208206093, guid: ff25a5b57d9b3a145a402c380c7296b1, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ff25a5b57d9b3a145a402c380c7296b1, type: 3}
 --- !u!1001 &5771950541037151522
