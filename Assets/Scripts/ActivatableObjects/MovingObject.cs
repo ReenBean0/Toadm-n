@@ -11,7 +11,9 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour, IActivatableObject
 {
     [SerializeField] Vector3 startPos;
+    [SerializeField] Quaternion startRot;
     [SerializeField] Vector3 endPos;
+    [SerializeField] Quaternion endRot;
     [SerializeField] float animSpeed;
 
     bool isOn;
@@ -20,6 +22,7 @@ public class MovingObject : MonoBehaviour, IActivatableObject
     {
         isOn = false;
         transform.position = startPos;
+        transform.rotation = startRot;
     }
 
     public void Interact()
@@ -37,21 +40,22 @@ public class MovingObject : MonoBehaviour, IActivatableObject
     public void InteractOff()
     {
         isOn = false;
-        StartCoroutine(MoveToPosition(startPos));
+        StartCoroutine(MoveToPosition(startPos, startRot));
     }
 
     public void InteractOn()
     {
         isOn = true;
-        StartCoroutine(MoveToPosition(endPos));
+        StartCoroutine(MoveToPosition(endPos, endRot));
     }
 
-    IEnumerator MoveToPosition(Vector3 target)
+    IEnumerator MoveToPosition(Vector3 target, Quaternion angle)
     {
         float distance = Vector3.Distance(transform.position, target);
         float duration = distance / animSpeed;
 
         Vector3 animationStartPos = transform.position;
+        Quaternion animationRotPos = transform.rotation;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
@@ -59,6 +63,7 @@ public class MovingObject : MonoBehaviour, IActivatableObject
             // Animate object based on elapsed time
             float t = Mathf.Clamp01(elapsedTime / duration);
             transform.position = Vector3.Lerp(animationStartPos, target, t);
+            transform.rotation = Quaternion.Slerp(animationRotPos, angle, t);
 
             elapsedTime += Time.deltaTime;
 
@@ -67,6 +72,7 @@ public class MovingObject : MonoBehaviour, IActivatableObject
         }
 
         // Set the final position of the object to the target position to ensure accuracy
+        transform.rotation = angle;
         transform.position = target;
     }
 }

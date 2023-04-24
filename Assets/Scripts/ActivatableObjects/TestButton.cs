@@ -34,13 +34,13 @@ public class TestButton : MonoBehaviour, IActivatableObject
     {
         isOn = false;
         transform.localScale = offScale;
-        transform.position = offPosition;
+        transform.localPosition = offPosition;
     }
 
     public void InteractOn()
     {
         isOn = true;
         transform.localScale = onScale;
-        transform.position = onPosition;
+        transform.localPosition = onPosition;
     }
 }

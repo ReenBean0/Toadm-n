@@ -33,14 +33,14 @@ public class TestSwitch : MonoBehaviour, IActivatableObject
     public void InteractOff()
     {
         isOn = false;
-        transform.position = offPosition;
-        transform.rotation = Quaternion.Euler(offRotation);
+        transform.localPosition = offPosition;
+        transform.localRotation = Quaternion.Euler(offRotation);
     }
 
     public void InteractOn()
     {
         isOn = true;
-        transform.position = onPosition;
-        transform.rotation = Quaternion.Euler(onRotation);
+        transform.localPosition = onPosition;
+        transform.localRotation = Quaternion.Euler(onRotation);
     }
 }
