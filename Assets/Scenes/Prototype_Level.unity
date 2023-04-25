@@ -877,6 +877,14 @@ PrefabInstance:
       value: 1.3080907
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: endRot.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: endRot.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: startPos.x
       value: 26.92
       objectReference: {fileID: 0}
@@ -887,6 +895,14 @@ PrefabInstance:
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: startPos.z
       value: 1.3080907
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: startRot.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: startRot.z
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945628, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: m_RootOrder
@@ -1744,6 +1760,14 @@ PrefabInstance:
       value: 1.3080907
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: endRot.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: endRot.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: startPos.x
       value: 26.92
       objectReference: {fileID: 0}
@@ -1754,6 +1778,14 @@ PrefabInstance:
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: startPos.z
       value: 1.3080907
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: startRot.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: startRot.z
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945628, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: m_RootOrder
