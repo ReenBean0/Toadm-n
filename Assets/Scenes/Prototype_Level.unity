@@ -502,56 +502,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2539568999208393601, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
   m_PrefabInstance: {fileID: 1186405747}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &619716610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619716603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634c27917f745364fb528a206f2063cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &619716618
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619716603}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.88, y: 15.82}
-    newSize: {x: 18.88, y: 15.82}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 18.88, y: 15.82}
-  m_EdgeRadius: 0
---- !u!114 &619716619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619716603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed33132ca1c02d24cb4eb1d8cbfe0c4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &623013222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3414940098703930923, guid: 692c39ff36956744b8c616b88d638e35, type: 3}
@@ -1164,21 +1114,9 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 619716610, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 619716610, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393601, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_Name
       value: Toadman
-      objectReference: {fileID: 0}
-    - target: {fileID: 2539568999208393601, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_RootOrder
@@ -1228,8 +1166,7 @@ PrefabInstance:
       propertyPath: flyCursor
       value: 
       objectReference: {fileID: 623013222}
-    m_RemovedComponents:
-    - {fileID: 619716610, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
 --- !u!1 &1267093466 stripped
@@ -1250,7 +1187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 53.28, y: -4.42, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
   endPos: {x: 37.24, y: -4.42, z: 0}
+  endRot: {x: 0, y: 0, z: 0, w: 0}
   animSpeed: 5
 --- !u!1001 &1276647680
 PrefabInstance:

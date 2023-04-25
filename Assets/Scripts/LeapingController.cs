@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LeapingController : MonoBehaviour
 {
+    [SerializeField] GameObject leftGroundCheck;
+    [SerializeField] GameObject rightGroundCheck;
+
     float minDistance = 1f;//Minimum distance needed to launch a leap
     float maxDistance = 2f;//Maximum distance for max force to lauch the leap
     float forceScale = 50;//Scale to multiply distance to resonable force to leap
@@ -56,21 +60,31 @@ public class LeapingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, 1 << 7);
-
+        RaycastHit2D leftHit = Physics2D.Raycast(leftGroundCheck.transform.position, -Vector2.up, Mathf.Infinity, 1 << 7);
+        RaycastHit2D rightHit = Physics2D.Raycast(rightGroundCheck.transform.position, -Vector2.up, Mathf.Infinity, 1 << 7);
+        float leftDistance = 1;
+        float rightDistance = 1;
         // If it hits something...
-        if (hit.collider != null)
+        if (leftHit.collider != null)
         {
             // Calculate the distance from the surface and the "error" relative
             // to the floating height.
-            float distance = Mathf.Abs(hit.point.y - transform.position.y);
-            Debug.Log(distance);
-            if (distance <= 0.9)
-            {
-                startLeap = false;
-            }
-            else startLeap = true;
+            leftDistance = Mathf.Abs(leftHit.point.y - transform.position.y);
+
         }
+        if (rightHit.collider != null)
+        {
+            // Calculate the distance from the surface and the "error" relative
+            // to the floating height.
+            rightDistance = Mathf.Abs(rightHit.point.y - transform.position.y);
+        }
+
+        Debug.Log($"Left distance: {leftDistance} | Right distance: {rightDistance}");
+        if (leftDistance <= 0.9 || rightDistance <= 0.9)
+        {
+            startLeap = false;
+        }
+        else startLeap = true;
 
         //Debug.Log("Pos diff" + (posChecker - transform.position));
         //if the object stop moving, enable checker for next leap
