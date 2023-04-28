@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UnityEditor.ObjectWrapperJSON:{"guid":"","localId":0,"type":0,"instanceID":38032}
   layers:
   - Default
   - TransparentFX
