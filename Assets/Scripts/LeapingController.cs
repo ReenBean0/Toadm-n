@@ -79,7 +79,7 @@ public class LeapingController : MonoBehaviour
             rightDistance = Mathf.Abs(rightHit.point.y - transform.position.y);
         }
 
-        Debug.Log($"Left distance: {leftDistance} | Right distance: {rightDistance}");
+        //Debug.Log($"Left distance: {leftDistance} | Right distance: {rightDistance}");
         if (leftDistance <= 0.9 || rightDistance <= 0.9)
         {
             startLeap = false;
