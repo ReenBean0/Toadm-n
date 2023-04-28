@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Anchors can be set for anchoredobjects to move between states
+/// - Rian
+/// </summary>
 public class MovementAnchor : MonoBehaviour, IActivatableObject
 {
     [SerializeField] AnchoredObject.STATE state;

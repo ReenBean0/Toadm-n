@@ -4,21 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Moving object that is activated by a switch or button
-/// Animates to predetermined positions
-/// Interact method is called by any switches or buttons that have this object as a target object
-/// - Henry Paul
+/// I stole most of this from Henry, but I needed a special type of moving platform
+/// Uses anchors to move between states
+/// - Rian
 /// </summary>
 public class AnchoredObject : MonoBehaviour
 {
     [SerializeField] MovementAnchor leftAnchor;
     [SerializeField] MovementAnchor rightAnchor;
     [SerializeField] MovementAnchor startAnchor;
-    //[SerializeField] Vector3 startPos;
-    //[SerializeField] Quaternion startRot;
-    //[SerializeField] Vector3 leftPos;
-    //[SerializeField] Vector3 rightPos;
-    //[SerializeField] Quaternion endRot;
     [SerializeField] float animSpeed;
 
     Vector3 startPos => startAnchor.transform.position;
@@ -76,7 +70,6 @@ public class AnchoredObject : MonoBehaviour
         float duration = distance / animSpeed;
 
         Vector3 animationStartPos = transform.position;
-        Quaternion animationRotPos = transform.rotation;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
