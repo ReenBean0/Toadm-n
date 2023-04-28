@@ -21,8 +21,8 @@ public class MovingObject : MonoBehaviour, IActivatableObject
     public void Start()
     {
         isOn = false;
-        transform.position = startPos;
-        transform.rotation = startRot;
+        transform.localPosition = startPos;
+        transform.localRotation = startRot;
     }
 
     public void Interact()
@@ -54,16 +54,16 @@ public class MovingObject : MonoBehaviour, IActivatableObject
         float distance = Vector3.Distance(transform.position, target);
         float duration = distance / animSpeed;
 
-        Vector3 animationStartPos = transform.position;
-        Quaternion animationRotPos = transform.rotation;
+        Vector3 animationStartPos = transform.localPosition;
+        Quaternion animationRotPos = transform.localRotation;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             // Animate object based on elapsed time
             float t = Mathf.Clamp01(elapsedTime / duration);
-            transform.position = Vector3.Lerp(animationStartPos, target, t);
-            transform.rotation = Quaternion.Slerp(animationRotPos, angle, t);
+            transform.localPosition = Vector3.Lerp(animationStartPos, target, t);
+            transform.localRotation = Quaternion.Slerp(animationRotPos, angle, t);
 
             elapsedTime += Time.deltaTime;
 
@@ -72,7 +72,7 @@ public class MovingObject : MonoBehaviour, IActivatableObject
         }
 
         // Set the final position of the object to the target position to ensure accuracy
-        transform.rotation = angle;
-        transform.position = target;
+        transform.localRotation = angle;
+        transform.localPosition = target;
     }
 }
