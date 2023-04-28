@@ -14,6 +14,13 @@ public class InteractableObjectDetection : MonoBehaviour
     private float currentTime = 0;
     private float nextTime = 0;
 
+    private FlyController flyController;
+
+    private void Start()
+    {
+        flyController = GetComponent<FlyController>();
+    }
+
     private void Update()
     {
         //casts a circle with a given radius, at the position of the object this script is attached to, then returns the collder2D within this 
@@ -32,16 +39,18 @@ public class InteractableObjectDetection : MonoBehaviour
             if(currentTime + interactDelay > nextTime)
             {
                 nextTime = Time.time;
-                this.GetComponent<FlyController>().enabled = false;
+                flyController.enabled = false;
             }
             else
             {
-                this.GetComponent <FlyController>().enabled = true;
+                flyController.enabled = true;
             }
         }
         else
         {
             setPosisitionCheck = false;
+            if(!flyController.enabled)
+                flyController.enabled = true;
         }
     }
 
