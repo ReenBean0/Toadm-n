@@ -792,7 +792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7626503754761802271, guid: fa941a528603e4a4b95d2b7008f99f76, type: 3}
       propertyPath: onPosition.y
-      value: -3.017
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 7626503754761802271, guid: fa941a528603e4a4b95d2b7008f99f76, type: 3}
       propertyPath: onRotation.z
@@ -804,7 +804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7626503754761802271, guid: fa941a528603e4a4b95d2b7008f99f76, type: 3}
       propertyPath: offPosition.y
-      value: -3.017
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 7626503754761802271, guid: fa941a528603e4a4b95d2b7008f99f76, type: 3}
       propertyPath: offRotation.z
@@ -825,6 +825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestMovingObject
       objectReference: {fileID: 0}
+    - target: {fileID: 2432567203479945601, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: endPos.x
       value: 0.4
@@ -835,11 +839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: endRot.w
-      value: 0.70710677
+      value: -0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: endRot.z
-      value: -0.70710677
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 2432567203479945602, guid: 1d7128bc89bbd0446b7454f33203004d, type: 3}
       propertyPath: animSpeed
