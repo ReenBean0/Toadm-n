@@ -1182,6 +1182,10 @@ PrefabInstance:
       propertyPath: flyCursor
       value: 
       objectReference: {fileID: 623013222}
+    - target: {fileID: 2539568999208393606, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
+      propertyPath: animationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
