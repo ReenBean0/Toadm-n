@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class Switch : InteractableResponse
 {
+    [SerializeField] bool isPermanent;
+
     private void OnValidate()
     {
         pressDuration = -1;
@@ -21,9 +23,12 @@ public class Switch : InteractableResponse
         }
         else
         {
-            transform.localPosition = offPosition;
-            transform.localRotation = offRotation;
-            ActivateFallingEdge();
+            if (!isPermanent)
+            {
+                transform.localPosition = offPosition;
+                transform.localRotation = offRotation;
+                ActivateFallingEdge();
+            }
         }
     }
 }
