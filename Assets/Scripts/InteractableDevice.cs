@@ -85,10 +85,13 @@ public class InteractableDevice : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"{name} collision with {collision.gameObject.name}");
-        if (collision.gameObject.name.Contains("Tongue"))
+        if (gameObject.layer == LayerMask.NameToLayer("Interactables"))
         {
-            Interact();
+            Debug.Log($"{name} collision with {collision.gameObject.name}");
+            if (collision.gameObject.name.Contains("Tongue"))
+            {
+                Interact();
+            }
         }
     }
 }

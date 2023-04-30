@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6198172605693717281}
   - component: {fileID: 4664391534472548165}
-  - component: {fileID: 7626503754761802270}
   - component: {fileID: 7626503754761802271}
   m_Layer: 6
   m_Name: Placeholder_Switch
@@ -145,26 +144,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.685907, y: 2.595092}
   m_EdgeRadius: 0
---- !u!114 &7626503754761802270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7556267274445599847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751edf612c44ae447876517a96aec935, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSwitch: 1
-  risingEdgeTargetObjects:
-  - {fileID: 7556267274445599847}
-  - {fileID: 0}
-  fallingEdgeTargetObjects:
-  - {fileID: 7556267274445599847}
-  - {fileID: 0}
-  pressDuration: 0
 --- !u!114 &7626503754761802271
 MonoBehaviour:
   m_ObjectHideFlags: 0

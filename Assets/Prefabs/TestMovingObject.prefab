@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2432567203479945628}
   - component: {fileID: 2432567203479945603}
   - component: {fileID: 2432567203479945602}
+  - component: {fileID: 362673020371503889}
   - component: {fileID: 918111595272458838}
   m_Layer: 0
   m_Name: TestMovingObject
@@ -99,8 +100,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 6.85, y: -1.95, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
   endPos: {x: -0.11, y: -1.95, z: 0}
+  endRot: {x: 0, y: 0, z: 0, w: 0}
   animSpeed: 5
+--- !u!114 &362673020371503889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432567203479945601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b7bd952b5cbd7418ba7d846f72a3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  risingEdgeTargets: []
+  fallingEdgeTargets: []
+  onPosition: {x: -0.11, y: -1.95, z: 0}
+  onRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
+  onScale: {x: 0, y: 0, z: 0}
+  pressDuration: 5
 --- !u!61 &918111595272458838
 BoxCollider2D:
   m_ObjectHideFlags: 0
