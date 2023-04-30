@@ -15,6 +15,14 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         currentBound = startingBound.GetComponent<CameraBounds>();
+        camera.transform.position = currentBound.TargetCamPos;
+        camera.orthographicSize = currentBound.TargetScale;
+    }
+
+    public void FollowToad()
+    {
+        camera.transform.position = new Vector3(toad.transform.position.x, toad.transform.position.y, camera.transform.position.z);
+        camera.transform.parent = toad.transform;
     }
 
     // This will be called by the camera bounds scripts when the toad collides with them
@@ -22,6 +30,7 @@ public class CameraController : MonoBehaviour
     {
         if (cameraBounds != currentBound)
         {
+            camera.transform.parent = null;
             currentBound = cameraBounds;
             StartCoroutine(AnimateCameraToPos(cameraBounds.TargetCamPos, cameraBounds.TargetScale));
         }

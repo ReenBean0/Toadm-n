@@ -6,6 +6,7 @@ public class CameraBounds : MonoBehaviour
 {
     [SerializeField] float targetScale = 5;
     [SerializeField] Vector3 targetCamPos = new Vector3(0, 0, 0);
+    [SerializeField] bool followToadOnTrigger;
 
     CameraController cameraController;
 
@@ -28,7 +29,14 @@ public class CameraBounds : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            cameraController.onCollideWithCameraBounds(this);
+            if (followToadOnTrigger)
+            {
+                cameraController.FollowToad();
+            }
+            else
+            {
+                cameraController.onCollideWithCameraBounds(this);
+            }
         }
     }
 }
