@@ -15,14 +15,12 @@ public class Switch : InteractableResponse
     {
         if (!isActive)
         {
-            transform.localScale = onScale;
             transform.localPosition = onPosition;
             transform.localRotation = onRotation;
             ActivateRisingEdge();
         }
         else
         {
-            transform.localScale = offScale;
             transform.localPosition = offPosition;
             transform.localRotation = offRotation;
             ActivateFallingEdge();

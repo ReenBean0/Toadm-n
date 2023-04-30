@@ -17,7 +17,6 @@ public class Handle : InteractableResponse
     {
         if (!isActive)
         {
-            transform.localScale = onScale;
             transform.localPosition = onPosition;
             transform.localRotation = onRotation;
 
@@ -27,7 +26,6 @@ public class Handle : InteractableResponse
         }
         else
         {
-            transform.localScale = offScale;
             transform.localPosition = offPosition;
             transform.localRotation = offRotation;
         }

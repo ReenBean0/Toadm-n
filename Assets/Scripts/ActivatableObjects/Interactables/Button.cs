@@ -10,7 +10,6 @@ public class Button : InteractableResponse
     {
         if(!isActive)
         {
-            transform.localScale = onScale;
             transform.localPosition = onPosition;
             transform.localRotation = onRotation;
 
@@ -20,7 +19,6 @@ public class Button : InteractableResponse
         }
         else
         {
-            transform.localScale = offScale;
             transform.localPosition = offPosition;
             transform.localRotation = offRotation;
         }
