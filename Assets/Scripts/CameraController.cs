@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -8,8 +9,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] GameObject startingBound;
     [SerializeField] GameObject toad;
     [SerializeField] float targetSpeed;
-
+    [SerializeField] GameObject flies;
     CameraBounds currentBound;
+    bool isCameraMoving;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +19,24 @@ public class CameraController : MonoBehaviour
         currentBound = startingBound.GetComponent<CameraBounds>();
         camera.transform.position = currentBound.TargetCamPos;
         camera.orthographicSize = currentBound.TargetScale;
+        isCameraMoving = false;
+    }
+
+    private void Update()
+    {
+        if (isCameraMoving)
+        {
+            flies.transform.parent = camera.transform;
+        }
+        else
+        {
+            flies.transform.parent = null;
+        }
     }
 
     public void FollowToad()
     {
+        isCameraMoving = true;
         camera.transform.position = new Vector3(toad.transform.position.x, toad.transform.position.y, camera.transform.position.z);
         camera.transform.parent = toad.transform;
     }
@@ -30,6 +46,7 @@ public class CameraController : MonoBehaviour
     {
         if (cameraBounds != currentBound)
         {
+            isCameraMoving = true;
             camera.transform.parent = null;
             currentBound = cameraBounds;
             StartCoroutine(AnimateCameraToPos(cameraBounds.TargetCamPos, cameraBounds.TargetScale));
@@ -75,5 +92,6 @@ public class CameraController : MonoBehaviour
         // Animation complete
         camTransform.position = targetPosition;
         camera.orthographicSize = targetScale;
+        isCameraMoving = false;
     }
 }

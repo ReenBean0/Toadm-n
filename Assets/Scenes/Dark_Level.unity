@@ -562,6 +562,7 @@ MonoBehaviour:
   startingBound: {fileID: 1124004161}
   toad: {fileID: 1095672432}
   targetSpeed: 28
+  flies: {fileID: 325114840}
 --- !u!114 &271621461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,11 +888,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3414940098703930935, guid: 692c39ff36956744b8c616b88d638e35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.29
+      value: -2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3414940098703930935, guid: 692c39ff36956744b8c616b88d638e35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.77
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: 3414940098703930935, guid: 692c39ff36956744b8c616b88d638e35, type: 3}
       propertyPath: m_LocalPosition.z
@@ -979,7 +980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968285, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -35.61
+      value: -34.66
       objectReference: {fileID: 0}
     - target: {fileID: 2945914785980968285, guid: 3586b4a91c7b06b4981d0c84588d8be4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2207,11 +2208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.02
+      value: -4.76
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.22
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.z
