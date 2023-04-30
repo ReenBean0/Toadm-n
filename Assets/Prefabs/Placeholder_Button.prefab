@@ -129,7 +129,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0062572956, y: 0.020449996}
@@ -175,3 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7951a678ad0e346bd92b2de7101523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPosition: {x: 0, y: 0, z: 0}
+  onScale: {x: 0, y: 0, z: 0}
+  offPosition: {x: 0, y: 0, z: 0}
+  offScale: {x: 0, y: 0, z: 0}
