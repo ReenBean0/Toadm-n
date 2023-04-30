@@ -10,11 +10,11 @@ using UnityEngine;
 public class MovementAnchor : MonoBehaviour, IActivatableObject
 {
     [SerializeField] AnchoredObject.STATE state;
-    AnchoredObject platform;
+    [SerializeField] AnchoredObject platform;
 
     private void OnValidate()
     {
-        platform = gameObject.GetComponentInParent<AnchoredObject>();
+        //platform = gameObject.GetComponentInParent<AnchoredObject>();
     }
 
     public void Interact()
@@ -32,7 +32,7 @@ public class MovementAnchor : MonoBehaviour, IActivatableObject
     // Start is called before the first frame update
     void Start()
     {
-        
+        //transform.parent = null;
     }
 
     // Update is called once per frame
