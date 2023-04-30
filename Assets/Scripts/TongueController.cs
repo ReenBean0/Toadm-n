@@ -20,6 +20,11 @@ public class TongueController : MonoBehaviour
     Transform flyTransform;
     float flyX;
     float flyY;
+    float tongueWidth = 0.4f;
+    float tongueSpeed = 5;
+    Color tongueColor = new Color(1, 0.47f, 0.47f);
+    GameObject tongueObject;
+    LineRenderer lineRender;
 
     GameObject tongueInstance;
 
@@ -31,11 +36,43 @@ public class TongueController : MonoBehaviour
     {
         flyTransform = flyCursor.GetComponent<Transform>();
         tongueCooldown = false;
+        flyX = transform.position.x;
+        flyY = transform.position.y;
+        tongueObject = new GameObject("tongue");
+        tongueObject.transform.parent = transform;
+        tongueObject.AddComponent<LineRenderer>();
+        lineRender = tongueObject.GetComponent<LineRenderer>();
+        lineRender.startWidth = tongueWidth;
+        lineRender.endWidth = tongueWidth;
+        lineRender.SetPosition(0, Vector3.zero);
+        lineRender.SetPosition(1, Vector3.zero);
+        lineRender.material = new Material(Shader.Find("Sprites/Default"));
+        lineRender.startColor = tongueColor;
+        lineRender.endColor = tongueColor;
+        //tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y, 1), Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (tongueInstance != null)
+        {
+            //keep tongue attach to toad
+            lineRender.SetPosition(0, Vector3.zero);
+            slope = (flyY - transform.position.y) / (flyX - transform.position.x);
+            c = flyY - slope * flyX;
+            if (tongueCooldown)
+            {
+                //tongue had shoot
+                tongueInstance.transform.position = transform.position;
+            }
+        }
+        */
+        if (tongueCooldown)
+        {
+            lineRender.SetPosition(0, transform.position);
+        }
         if (Input.GetKeyDown(KeyCode.Space) && !tongueCooldown)
         {
             flyX = flyTransform.position.x;
@@ -47,16 +84,44 @@ public class TongueController : MonoBehaviour
             //mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             //Debug.Log($"Launch tongue at X={mousePosition.x}, y={mousePosition.y}");
 
-            Vector3 tongueDestination = new Vector3(flyX, flyY, 1);
-            LaunchTongue(tongueDestination);
+            //Vector3 tongueDestination = new Vector3(flyX, flyY, 1);
+            //LaunchTongue(tongueDestination);
+
+            StartCoroutine(ShootTongue());
         }
     }
-
+    IEnumerator ShootTongue()
+    {
+        float startTime = Time.time;
+        Vector3 targetPos = new Vector3(flyX, flyY, 1);
+        tongueCooldown = true;
+        while (tongueCooldown)
+        {
+            //launch
+            while (lineRender.GetPosition(1) != targetPos)
+            {
+                targetPos = new Vector3(flyX, flyY, 1);
+                float t = (Time.time - startTime) * tongueSpeed;
+                Vector3 newPos = Vector3.Lerp(transform.position, targetPos, t);
+                lineRender.SetPosition(1, newPos);
+                yield return null;
+            }
+            startTime = Time.time;
+            //reverse
+            while (lineRender.GetPosition(1) != transform.position)
+            {
+                float t = (Time.time - startTime) * tongueSpeed;
+                Vector3 newPos = Vector3.Lerp(lineRender.GetPosition(1),transform.position,  t);
+                lineRender.SetPosition(1, newPos);
+                yield return null;
+            }
+            tongueCooldown = false;
+        }
+    }
     void LaunchTongue(Vector3 targetPos)
     {
         // Spawn tongue
         //tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y, 1), Quaternion.identity);
-        tongueInstance = Instantiate(tonguePrefab, transform.position, Quaternion.identity);
 
         // Rotate tongue to face target point
         Vector3 direction = targetPos - transform.position;
