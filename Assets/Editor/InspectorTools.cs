@@ -1,26 +1,29 @@
-using static UnityEngine.GraphicsBuffer;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CustomEditor(typeof(Interactable), true)]
 class InspectorTools : Editor
 {
-
     Interactable interactable;
-    GameObject interactableObject;
+    SerializedProperty _position;
+    SerializedProperty _rotation;
 
     private void OnEnable()
     {
         interactable = (Interactable)target;
-        interactableObject = interactable.gameObject;
+        _position = serializedObject.FindProperty("onPosition");
+        _rotation = serializedObject.FindProperty("onRotation");
     }
 
     public override void OnInspectorGUI()
     {
+        serializedObject.Update();
         if (GUILayout.Button("Set Destination"))
         {
-            interactable.onPosition = interactableObject.transform.localPosition;
-            interactable.onRotation = interactableObject.transform.localRotation;
+            _position.vector3Value = interactable.gameObject.transform.localPosition;
+            _rotation.quaternionValue = interactable.gameObject.transform.localRotation;
+            serializedObject.ApplyModifiedProperties();
         }
         base.OnInspectorGUI();
     }

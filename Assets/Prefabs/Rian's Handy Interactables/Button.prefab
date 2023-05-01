@@ -44,7 +44,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -74,7 +74,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPosition: {x: 0, y: 0, z: 0}
   onRotation: {x: 0, y: 0, z: 0, w: 1}
-  onScale: {x: 1, y: 1, z: 1}
   isActive: 0
   risingEdgeTargets:
   - {fileID: 0}
