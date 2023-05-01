@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     CameraBounds currentBound;
     bool isCameraMoving;
 
+    public Camera Camera { get { return camera; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move and attach camera to toad
+    /// </summary>
     public void FollowToad()
     {
         isCameraMoving = true;
@@ -41,20 +46,25 @@ public class CameraController : MonoBehaviour
         camera.transform.parent = toad.transform;
     }
 
-    // This will be called by the camera bounds scripts when the toad collides with them
+    /// <summary>
+    /// This will be called by the camera bounds scripts when the toad collides with them
+    /// </summary>
     public void onCollideWithCameraBounds(CameraBounds cameraBounds)
     {
         if (cameraBounds != currentBound)
         {
-            isCameraMoving = true;
             camera.transform.parent = null;
             currentBound = cameraBounds;
             StartCoroutine(AnimateCameraToPos(cameraBounds.TargetCamPos, cameraBounds.TargetScale));
         }
     }
 
-    IEnumerator AnimateCameraToPos(Vector3 targetPosition, float targetScale)
+    /// <summary>
+    /// Animate camera to target position and orthographic size
+    /// </summary>
+    public IEnumerator AnimateCameraToPos(Vector3 targetPosition, float targetScale)
     {
+        isCameraMoving = true;
         Debug.Log($"Move camera to: {targetPosition.x}, {targetPosition.y}, {targetPosition.z}");
         Transform camTransform = camera.GetComponent<Transform>();
 
@@ -93,5 +103,26 @@ public class CameraController : MonoBehaviour
         camTransform.position = targetPosition;
         camera.orthographicSize = targetScale;
         isCameraMoving = false;
+    }
+
+    /// <summary>
+    /// Animate camera to a position, pause for 'x' seconds and animate to previous position. Use with "StartCoroutine"
+    /// </summary>
+    public IEnumerator AnimateCameraEvent(Vector3 targetPosition, float targetScale, float pauseDuration, float startDelay)
+    {
+        Vector3 previousCamPos = camera.transform.position;
+        float previousCamScale = camera.orthographicSize;
+
+        // Delay before camera movement
+        yield return new WaitForSecondsRealtime(startDelay);
+
+        // Initial camera movement
+        yield return StartCoroutine(AnimateCameraToPos(targetPosition, targetScale));
+        
+        // Pause
+        yield return new WaitForSecondsRealtime(pauseDuration);
+
+        // Return to previous position
+        yield return StartCoroutine(AnimateCameraToPos(previousCamPos, previousCamScale));
     }
 }

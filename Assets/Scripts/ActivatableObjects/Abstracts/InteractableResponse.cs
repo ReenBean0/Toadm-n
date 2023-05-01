@@ -9,13 +9,28 @@ public abstract class InteractableResponse : Interactable
 
     [SerializeField] protected float pressDuration = 5;
 
+    [SerializeField] bool triggerCameraEvent;
+    [SerializeField] GameObject gameManagerObject;
+    [SerializeField] Vector3 camTargetPos;
+    [SerializeField] float camTargetScale;
+    [SerializeField] float cameraPauseBeforeReturn;
+    [SerializeField] float startDelay;
+    protected Vector3 previousCamPos;
+    protected float previousCamScale;
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Contains("Tongue"))
         {
             Interact();
+
+            if (triggerCameraEvent)
+            {
+                CameraEvent();
+            }
         }
     }
+
     protected void ActivateFallingEdge()
     {
         foreach (GameObject gameObject in fallingEdgeTargets)
@@ -25,7 +40,6 @@ public abstract class InteractableResponse : Interactable
         isActive = false;
     }
 
-
     protected void ActivateRisingEdge()
     {
         foreach (GameObject gameObject in risingEdgeTargets)
@@ -33,5 +47,11 @@ public abstract class InteractableResponse : Interactable
             gameObject.GetComponent<IActivatableObject>().Interact();
         }
         isActive = true;
+    }
+
+    void CameraEvent()
+    {
+        CameraController camController = gameManagerObject.GetComponent<CameraController>();
+        StartCoroutine(camController.AnimateCameraEvent(camTargetPos, camTargetScale, cameraPauseBeforeReturn, startDelay));
     }
 }
