@@ -10,11 +10,10 @@ public abstract class InteractableResponse : Interactable
     [SerializeField] protected float pressDuration = 5;
 
     [SerializeField] bool triggerCameraEvent;
-    [SerializeField] GameObject gameManagerObject;
     [SerializeField] Vector3 camTargetPos;
     [SerializeField] float camTargetScale;
     [SerializeField] float cameraPauseBeforeReturn;
-    [SerializeField] float startDelay;
+    [SerializeField] float cameraEventStartDelay;
     protected Vector3 previousCamPos;
     protected float previousCamScale;
 
@@ -51,7 +50,7 @@ public abstract class InteractableResponse : Interactable
 
     void CameraEvent()
     {
-        CameraController camController = gameManagerObject.GetComponent<CameraController>();
-        StartCoroutine(camController.AnimateCameraEvent(camTargetPos, camTargetScale, cameraPauseBeforeReturn, startDelay));
+        CameraController camController = GameManager.instance.gameObject.GetComponent<CameraController>();
+        StartCoroutine(camController.AnimateCameraEvent(camTargetPos, camTargetScale, cameraPauseBeforeReturn, cameraEventStartDelay));
     }
 }
