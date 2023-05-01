@@ -8,6 +8,7 @@ public class MovingObjectNew : ObjectResponse
 
     public override void Interact()
     {
+        base.Interact();
         StartCoroutine(InteractWithPause());
     }
 

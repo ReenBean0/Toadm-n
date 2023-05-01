@@ -12,7 +12,21 @@ public abstract class Interactable : MonoBehaviour, IActivatableObject
 
     public bool isActive = false;
 
-    public abstract void Interact();
+    [SerializeField] protected bool triggerCameraEvent;
+    [SerializeField] protected Vector3 camTargetPos;
+    [SerializeField] protected float camTargetScale;
+    [SerializeField] protected float cameraPauseBeforeReturn;
+    [SerializeField] protected float cameraEventStartDelay;
+    protected Vector3 previousCamPos;
+    protected float previousCamScale;
+
+    public virtual void Interact()
+    {
+        if (triggerCameraEvent)
+        {
+            CameraEvent();
+        }
+    }
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -21,5 +35,9 @@ public abstract class Interactable : MonoBehaviour, IActivatableObject
         offRotation = gameObject.transform.localRotation;
     }
 
-
+    void CameraEvent()
+    {
+        CameraController camController = GameManager.instance.gameObject.GetComponent<CameraController>();
+        StartCoroutine(camController.AnimateCameraEvent(camTargetPos, camTargetScale, cameraPauseBeforeReturn, cameraEventStartDelay));
+    }
 }

@@ -15,6 +15,7 @@ public class PullableObject : ObjectResponse
 
     public override void Interact()
     {
+        base.Interact();
         if (!isActive)
         {
             isActive = true;

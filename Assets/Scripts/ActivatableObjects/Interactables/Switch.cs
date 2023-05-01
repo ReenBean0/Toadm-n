@@ -15,6 +15,7 @@ public class Switch : InteractableResponse
 
     public override void Interact()
     {
+        base.Interact();
         if (!isActive)
         {
             transform.localPosition = onPosition;

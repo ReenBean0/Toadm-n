@@ -8,6 +8,7 @@ public class Button : InteractableResponse
 
     public override void Interact()
     {
+        base.Interact();
         if(!isActive)
         {
             transform.localPosition = onPosition;

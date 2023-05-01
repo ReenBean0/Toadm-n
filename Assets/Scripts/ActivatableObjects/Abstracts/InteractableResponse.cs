@@ -9,24 +9,11 @@ public abstract class InteractableResponse : Interactable
 
     [SerializeField] protected float pressDuration = 5;
 
-    [SerializeField] bool triggerCameraEvent;
-    [SerializeField] Vector3 camTargetPos;
-    [SerializeField] float camTargetScale;
-    [SerializeField] float cameraPauseBeforeReturn;
-    [SerializeField] float cameraEventStartDelay;
-    protected Vector3 previousCamPos;
-    protected float previousCamScale;
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Contains("Tongue"))
         {
             Interact();
-
-            if (triggerCameraEvent)
-            {
-                CameraEvent();
-            }
         }
     }
 
@@ -46,11 +33,5 @@ public abstract class InteractableResponse : Interactable
             gameObject.GetComponent<IActivatableObject>().Interact();
         }
         isActive = true;
-    }
-
-    void CameraEvent()
-    {
-        CameraController camController = GameManager.instance.gameObject.GetComponent<CameraController>();
-        StartCoroutine(camController.AnimateCameraEvent(camTargetPos, camTargetScale, cameraPauseBeforeReturn, cameraEventStartDelay));
     }
 }
