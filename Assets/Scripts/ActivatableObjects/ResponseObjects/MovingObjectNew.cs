@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class MovingObjectNew : ObjectResponse
 {
+    [SerializeField] float pauseBeforeMove;
+
     public override void Interact()
     {
+        StartCoroutine(InteractWithPause());
+    }
+
+    IEnumerator InteractWithPause()
+    {
+        yield return new WaitForSecondsRealtime(pauseBeforeMove);
         if (isActive)
         {
             isActive = false;

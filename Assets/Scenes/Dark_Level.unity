@@ -1376,6 +1376,7 @@ MonoBehaviour:
   onRotation: {x: -0, y: -0, z: 0.9178708, w: 0.39687926}
   isActive: 0
   animSpeed: 5
+  pauseBeforeMove: 3
 --- !u!61 &597112639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1481,7 +1482,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42319632}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84eb3543b06e04f4ea497f73fc0f7d89, type: 3}
   m_Name: 
@@ -1494,6 +1495,12 @@ MonoBehaviour:
   - {fileID: 597112637}
   fallingEdgeTargets: []
   pressDuration: -1
+  triggerCameraEvent: 1
+  gameManagerObject: {fileID: 271621459}
+  camTargetPos: {x: -36.59, y: -47.88, z: -10}
+  camTargetScale: 5.02878
+  cameraPauseBeforeReturn: 3
+  startDelay: 0
   isPermanent: 1
 --- !u!1001 &676134446
 PrefabInstance:
@@ -2375,7 +2382,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.1253557
+  orthographic size: 5.0287795
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2399,7 +2406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185252330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.12, y: -61.12, z: -10}
+  m_LocalPosition: {x: -36.59, y: -47.88, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2794,6 +2801,7 @@ MonoBehaviour:
   onRotation: {x: 0, y: 0, z: 0, w: 1}
   isActive: 0
   animSpeed: 5
+  pauseBeforeMove: 0
 --- !u!1 &1555493477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,6 +3156,7 @@ MonoBehaviour:
   onRotation: {x: 0, y: 0, z: 0, w: 1}
   isActive: 0
   animSpeed: 7
+  pauseBeforeMove: 0
 --- !u!1 &1682560217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,11 +3783,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.7
+      value: -18.17
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -52.4
+      value: -23.92
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4172,6 +4181,7 @@ MonoBehaviour:
   onRotation: {x: -0, y: -0, z: -0.24974991, w: 0.96831036}
   isActive: 0
   animSpeed: 5
+  pauseBeforeMove: 3
 --- !u!61 &2135807572
 BoxCollider2D:
   m_ObjectHideFlags: 0
