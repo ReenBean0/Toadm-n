@@ -18,6 +18,7 @@ public class LeapingController : MonoBehaviour
     Vector3 posChecker;
     LineRenderer lineRender;
     GameObject playerInputLine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,12 +80,14 @@ public class LeapingController : MonoBehaviour
             rightDistance = Mathf.Abs(rightHit.point.y - transform.position.y);
         }
 
-        //Debug.Log($"Left distance: {leftDistance} | Right distance: {rightDistance}");
-        if (leftDistance <= 0.9 || rightDistance <= 0.9)
+        if (leftDistance < 1 || rightDistance < 1)
         {
             startLeap = false;
         }
-        else startLeap = true;
+        else
+        {
+            startLeap = true;
+        }
 
         //Debug.Log("Pos diff" + (posChecker - transform.position));
         //if the object stop moving, enable checker for next leap
