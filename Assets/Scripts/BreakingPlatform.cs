@@ -27,7 +27,7 @@ public class BreakingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Toadman")
+        if (collision.gameObject.name == "Toadman" && collision.gameObject.transform.position.y > transform.position.y)
         {
             breaking = true;
             StartCoroutine(Break());
