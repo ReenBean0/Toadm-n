@@ -18,6 +18,9 @@ public class LeapingController : MonoBehaviour
     Vector3 posChecker;
     LineRenderer lineRender;
     GameObject playerInputLine;
+
+    [SerializeField] float sittingDrag = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,9 +85,14 @@ public class LeapingController : MonoBehaviour
         //Debug.Log($"Left distance: {leftDistance} | Right distance: {rightDistance}");
         if (leftDistance <= 0.9 || rightDistance <= 0.9)
         {
+            toadRigi.drag = sittingDrag;
             startLeap = false;
         }
-        else startLeap = true;
+        else
+        {
+            toadRigi.drag = 0;
+            startLeap = true;
+        }
 
         //Debug.Log("Pos diff" + (posChecker - transform.position));
         //if the object stop moving, enable checker for next leap
