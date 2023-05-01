@@ -19,8 +19,6 @@ public class LeapingController : MonoBehaviour
     LineRenderer lineRender;
     GameObject playerInputLine;
 
-    [SerializeField] float sittingDrag = 10;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -82,15 +80,12 @@ public class LeapingController : MonoBehaviour
             rightDistance = Mathf.Abs(rightHit.point.y - transform.position.y);
         }
 
-        //Debug.Log($"Left distance: {leftDistance} | Right distance: {rightDistance}");
-        if (leftDistance <= 0.9 || rightDistance <= 0.9)
+        if (leftDistance < 1 || rightDistance < 1)
         {
-            toadRigi.drag = sittingDrag;
             startLeap = false;
         }
         else
         {
-            toadRigi.drag = 0;
             startLeap = true;
         }
 
