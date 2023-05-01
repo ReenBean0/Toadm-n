@@ -1376,6 +1376,7 @@ MonoBehaviour:
   onRotation: {x: -0, y: -0, z: 0.9178708, w: 0.39687926}
   isActive: 0
   animSpeed: 5
+  pauseBeforeMove: 3
 --- !u!61 &597112639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2800,6 +2801,7 @@ MonoBehaviour:
   onRotation: {x: 0, y: 0, z: 0, w: 1}
   isActive: 0
   animSpeed: 5
+  pauseBeforeMove: 0
 --- !u!1 &1555493477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,6 +3156,7 @@ MonoBehaviour:
   onRotation: {x: 0, y: 0, z: 0, w: 1}
   isActive: 0
   animSpeed: 7
+  pauseBeforeMove: 0
 --- !u!1 &1682560217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.64
+      value: -23.92
       objectReference: {fileID: 0}
     - target: {fileID: 2539568999208393604, guid: febf6cd3a59157a439bcd83fdd510d0e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4178,6 +4181,7 @@ MonoBehaviour:
   onRotation: {x: -0, y: -0, z: -0.24974991, w: 0.96831036}
   isActive: 0
   animSpeed: 5
+  pauseBeforeMove: 3
 --- !u!61 &2135807572
 BoxCollider2D:
   m_ObjectHideFlags: 0
