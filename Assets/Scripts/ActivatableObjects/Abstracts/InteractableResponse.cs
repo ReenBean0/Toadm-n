@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class InteractableResponse : Interactable
 {
-    [SerializeField] protected GameObject[] risingEdgeTargets;
-    [SerializeField] protected GameObject[] fallingEdgeTargets;
+    [SerializeField] protected List<GameObject> risingEdgeTargets;
+    [SerializeField] protected List<GameObject> fallingEdgeTargets;
 
     [SerializeField] protected float pressDuration = 5;
 
@@ -19,19 +19,57 @@ public abstract class InteractableResponse : Interactable
 
     protected void ActivateFallingEdge()
     {
-        foreach (GameObject gameObject in fallingEdgeTargets)
+        if (fallingEdgeTargets != null)
         {
-            gameObject.GetComponent<IActivatableObject>().Interact();
+            foreach (GameObject gameObject in fallingEdgeTargets)
+            {
+                gameObject.GetComponent<IActivatableObject>().Interact();
+            }
         }
         isActive = false;
     }
 
     protected void ActivateRisingEdge()
     {
-        foreach (GameObject gameObject in risingEdgeTargets)
+        if (risingEdgeTargets != null)
         {
-            gameObject.GetComponent<IActivatableObject>().Interact();
+            foreach (GameObject gameObject in risingEdgeTargets)
+            {
+                gameObject.GetComponent<IActivatableObject>().Interact();
+            }
         }
         isActive = true;
+    }
+
+    public void RemoveObjectFromRisingEdge(GameObject objectToRemove)
+    {
+        if (risingEdgeTargets != null)
+        {
+            risingEdgeTargets.Remove(objectToRemove);
+        }
+    }
+
+    public void AddObjectToRisingEdge(GameObject objectToAdd)
+    {
+        if (risingEdgeTargets != null)
+        {
+            risingEdgeTargets.Add(objectToAdd);
+        }
+    }
+
+    public void RemoveObjectFromFallingEdge(GameObject objectToRemove)
+    {
+        if (fallingEdgeTargets != null)
+        {
+            fallingEdgeTargets.Remove(objectToRemove);
+        }
+    }
+
+    public void AddObjectToFallingEdge(GameObject objectToAdd)
+    {
+        if (fallingEdgeTargets != null)
+        {
+            fallingEdgeTargets.Add(objectToAdd);
+        }
     }
 }
