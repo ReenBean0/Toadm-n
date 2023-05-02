@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 
-public class ToadEyeMovement : MonoBehaviour
+public class EyeMovement : MonoBehaviour
 {
+    [SerializeField] bool isFly = false;
     [SerializeField] GameObject targetObject;
     [SerializeField] float rotationSpeed = 10f;
     //this can be changed to make the eyes rotate faster or slower to make it more natural
 
     void Update()
     {
-        Vector3 target = targetObject.transform.position;
+        Vector3 target;
+        if (isFly)
+        {
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else
+        {
+            target = targetObject.transform.position;
+        }
         target.z = transform.position.z;
         Vector3 direction = target - transform.position;
 
