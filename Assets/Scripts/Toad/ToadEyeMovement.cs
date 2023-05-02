@@ -13,9 +13,7 @@ public class ToadEyeMovement : MonoBehaviour
     {
         Vector3 target = targetObject.transform.position;
         target.z = transform.position.z;
-        Debug.Log(target);   
         Vector3 direction = target - transform.position;
-        Debug.Log("position at " + transform.position.x + " " + transform.position.y);
 
         // Calculate the angle, only works if the pupil is at the top of the eye
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
