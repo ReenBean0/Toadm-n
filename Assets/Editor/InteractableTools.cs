@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [CustomEditor(typeof(Interactable), true)]
-class InspectorTools : Editor
+class InteractableTools : Editor
 {
     Interactable interactable;
     SerializedProperty _position;
