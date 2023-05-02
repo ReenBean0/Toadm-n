@@ -16,11 +16,8 @@ public class FireProjectile : ObjectResponse
 
     public override void Interact()
     {
-        if (!isActive)
-        {
-            base.Interact();
-            StartCoroutine(WaitAndFire(turnOnDelay));
-        }
+        base.Interact();
+        StartCoroutine(WaitAndFire(turnOnDelay));
     }
 
     public IEnumerator WaitAndFire(float waitTime)
@@ -52,6 +49,11 @@ public class FireProjectile : ObjectResponse
     IEnumerator BeginLifetimeCountdown()
     {
         yield return new WaitForSecondsRealtime(projectileLifespan);
+        KillProjectile();
+    }
+
+    public void KillProjectile()
+    {
         if (isProjectileAlive)
         {
             isProjectileAlive = false;
