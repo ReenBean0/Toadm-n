@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - UnityEditor.ObjectWrapperJSON:{"guid":"","localId":0,"type":0,"instanceID":38032}
+  - Projectile
   layers:
   - Default
   - TransparentFX
