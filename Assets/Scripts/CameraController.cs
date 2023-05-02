@@ -13,6 +13,9 @@ public class CameraController : MonoBehaviour
     CameraBounds currentBound;
     bool isCameraMoving;
 
+    Vector3 previousCamPos;
+    float previousCamScale;
+
     public Camera Camera { get { return camera; } }
 
     // Start is called before the first frame update
@@ -37,13 +40,25 @@ public class CameraController : MonoBehaviour
     }
 
     /// <summary>
-    /// Move and attach camera to toad
+    /// Animate camera back to last recorded position and disconnect transform from a parent
     /// </summary>
-    public void FollowToad()
+    public void MoveCameraBackToPreviousPosition()
     {
+        camera.transform.parent = null;
+        StartCoroutine(AnimateCameraToPos(previousCamPos, previousCamScale));
+    }
+
+    /// <summary>
+    /// Move and attach camera to a gameObject
+    /// </summary>
+    public void FollowObject(GameObject objectToFollow, float cameraOrthographicSize)
+    {
+        previousCamPos = camera.transform.position;
+        previousCamScale = camera.orthographicSize;
         isCameraMoving = true;
-        camera.transform.position = new Vector3(toad.transform.position.x, toad.transform.position.y, camera.transform.position.z);
-        camera.transform.parent = toad.transform;
+        camera.orthographicSize = cameraOrthographicSize;
+        camera.transform.position = new Vector3(objectToFollow.transform.position.x, objectToFollow.transform.position.y, camera.transform.position.z);
+        camera.transform.parent = objectToFollow.transform;
     }
 
     /// <summary>
@@ -64,6 +79,8 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public IEnumerator AnimateCameraToPos(Vector3 targetPosition, float targetScale)
     {
+        previousCamPos = camera.transform.position;
+        previousCamScale = camera.orthographicSize;
         isCameraMoving = true;
         Debug.Log($"Move camera to: {targetPosition.x}, {targetPosition.y}, {targetPosition.z}");
         Transform camTransform = camera.GetComponent<Transform>();
@@ -110,9 +127,6 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public IEnumerator AnimateCameraEvent(Vector3 targetPosition, float targetScale, float pauseDuration, float startDelay)
     {
-        Vector3 previousCamPos = camera.transform.position;
-        float previousCamScale = camera.orthographicSize;
-
         // Delay before camera movement
         yield return new WaitForSecondsRealtime(startDelay);
 

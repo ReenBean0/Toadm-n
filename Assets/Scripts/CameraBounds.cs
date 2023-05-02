@@ -31,7 +31,7 @@ public class CameraBounds : MonoBehaviour
         {
             if (followToadOnTrigger)
             {
-                cameraController.FollowToad();
+                cameraController.FollowObject(collision.gameObject, targetScale);
             }
             else
             {
