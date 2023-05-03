@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class TongueController : MonoBehaviour
 {
+    [SerializeField] float tongueRatio = 0.15f;
     [SerializeField] Sprite baseFrog;
     [SerializeField] Sprite openMouth;
     private SpriteRenderer spriteRenderer;
@@ -60,7 +61,7 @@ public class TongueController : MonoBehaviour
     {
         // Spawn tongue
         //tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y, 1), Quaternion.identity);
-        tongueInstance = Instantiate(tonguePrefab, transform.position, Quaternion.identity);
+        tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y+0.1f, -1), Quaternion.identity);
 
         // Rotate tongue to face target point
         Vector3 direction = targetPos - transform.position;
@@ -82,14 +83,14 @@ public class TongueController : MonoBehaviour
         tongueCooldown = true;
 
         // Set initial scale of tongue
-        tongue.transform.localScale = new Vector3(0.1f, 1, 1);
+        tongue.transform.localScale = new Vector3(0.1f, applyTongueRatio(0.1f), 1);
 
         // Scale tongue until target size is reached
         while (tongue.transform.localScale.x < distance)
         {
             // Calculate new scale based on elapsed time and speed
             float newScale = tongue.transform.localScale.x + (animationSpeed * Time.deltaTime);
-            tongue.transform.localScale = new Vector3(newScale, 1, 1);
+            tongue.transform.localScale = new Vector3(newScale, applyTongueRatio(newScale), 1);
 
             // Pause coroutine until next frame
             yield return null;
@@ -97,7 +98,7 @@ public class TongueController : MonoBehaviour
 
         // If here - animation is complete
         // Set final scale of tongue
-        tongue.transform.localScale = new Vector3(distance, 1, 1);
+        tongue.transform.localScale = new Vector3(distance, applyTongueRatio(distance), 1);
 
         GetComponent<ToadSFXController>().PlayTongueHit();
 
@@ -122,14 +123,14 @@ public class TongueController : MonoBehaviour
         {
             // Calculate new scale based on elapsed time and speed
             float newScale = tongue.transform.localScale.x + (reversedSpeed * Time.deltaTime);
-            tongue.transform.localScale = new Vector3(newScale, 1, 1);
+            tongue.transform.localScale = new Vector3(newScale, applyTongueRatio(newScale), 1);
 
             // Pause coroutine until next frame
             yield return null;
         }
 
         // Set final scale of tongue
-        tongue.transform.localScale = new Vector3(0.1f, 1, 1);
+        tongue.transform.localScale = new Vector3(0.1f, applyTongueRatio(0.1f), 1);
 
         // Be gone foul tongue
         Destroy(tongue);
@@ -149,5 +150,11 @@ public class TongueController : MonoBehaviour
     public void ChangeTonguePosition(float xMovement, float yMovement)
     {
 
+    }
+
+    private float applyTongueRatio(float scale)
+    {
+        float result = scale * tongueRatio;
+        return Mathf.Min(result, 12);
     }
 }
