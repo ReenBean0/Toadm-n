@@ -53,7 +53,7 @@ public class ToadSFXController : MonoBehaviour
 
     public void PlayRandomTongueWhip()
     {
-        int rnd = Random.Range(-1, tongueWhipSounds.Count);
+        int rnd = Random.Range(0, tongueWhipSounds.Count);
         audioSource.PlayOneShot(tongueWhipSounds[rnd]);
     }
 
