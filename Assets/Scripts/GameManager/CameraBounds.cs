@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraBounds : MonoBehaviour
 {
     [SerializeField] float targetScale = 5;
     [SerializeField] Vector3 targetCamPos = new Vector3(0, 0, 0);
     [SerializeField] bool followToadOnTrigger;
+
+    [SerializeField] List<GameObject> activateObjects;
+    [SerializeField] float activateObjectsDelay;
 
     CameraController cameraController;
 
@@ -37,6 +41,20 @@ public class CameraBounds : MonoBehaviour
             {
                 cameraController.onCollideWithCameraBounds(this);
             }
+
+            if (activateObjects != null)
+            {
+                StartCoroutine(ActivateObjects());
+            }
+        }
+    }
+
+    IEnumerator ActivateObjects()
+    {
+        yield return new WaitForSecondsRealtime(activateObjectsDelay);
+        foreach (GameObject gameObject in activateObjects)
+        {
+            gameObject.GetComponent<ObjectResponse>().Interact();
         }
     }
 }
