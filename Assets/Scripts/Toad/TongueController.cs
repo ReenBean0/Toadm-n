@@ -9,14 +9,14 @@ using UnityEngine;
 /// </summary>
 public class TongueController : MonoBehaviour
 {
-    [SerializeField] float tongueRatio = 0.15f;
+    [SerializeField] float tongueRatio = 1f;
     [SerializeField] Sprite baseFrog;
     [SerializeField] Sprite openMouth;
     private SpriteRenderer spriteRenderer;
     [SerializeField] GameObject flyCursor;
     [SerializeField] GameObject tonguePrefab;
-    [SerializeField] float animationSpeed;
-    [SerializeField] float animationPauseBeforeReversing;
+    [SerializeField] float animationSpeed = 200f;
+    [SerializeField] float animationPauseBeforeReversing = 0.3f;
 
     // Serialized so the cooldown status can be seen in the editor
     [SerializeField] bool tongueCooldown;
