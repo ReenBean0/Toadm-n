@@ -1390,6 +1390,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6634372184122132560, guid: 5a28c22aeda539f41b2f404062561c29, type: 3}
+      propertyPath: tongueRatio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7812600313881205056, guid: 5a28c22aeda539f41b2f404062561c29, type: 3}
       propertyPath: m_Name
       value: ToadAndFlies
