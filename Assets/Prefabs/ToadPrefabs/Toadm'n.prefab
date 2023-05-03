@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2888469085103311221, guid: 6a17ea2fd51ce6840b8bbafa58fbdb5e, type: 3}
+      propertyPath: baseFrog
+      value: 
+      objectReference: {fileID: 21300000, guid: 2644a5d7a01936b4eb81a5eb71ad9306, type: 3}
+    - target: {fileID: 2888469085103311221, guid: 6a17ea2fd51ce6840b8bbafa58fbdb5e, type: 3}
+      propertyPath: openMouth
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d75850877df5994ea91e5d0502f1ed6, type: 3}
     - target: {fileID: 5771950541256293428, guid: 6a17ea2fd51ce6840b8bbafa58fbdb5e, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.2
