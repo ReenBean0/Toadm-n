@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FireProjectile : ObjectResponse
 {
@@ -31,6 +32,9 @@ public class FireProjectile : ObjectResponse
         projectileInstance = Instantiate(projectilePrefab, gameObject.transform);
         isProjectileAlive = true;
 
+        GetComponent<Light2D>().enabled = true;
+        StartCoroutine(MuzzleFlash());
+
         StartCoroutine(BeginLifetimeCountdown());
         if (projectileCameraFollow)
         {
@@ -60,5 +64,12 @@ public class FireProjectile : ObjectResponse
             GameManager.instance.GetComponent<CameraController>().MoveCameraBackToPreviousPosition();
             Destroy(projectileInstance);
         }
+    }
+
+    IEnumerator MuzzleFlash()
+    {
+        GetComponent<Light2D>().enabled = true;
+        yield return new WaitForSecondsRealtime(0.5f);
+        GetComponent<Light2D>().enabled = false;
     }
 }

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FlySwap : ObjectResponse
 {
     [SerializeField] Sprite standardFlies;
     [SerializeField] Sprite fireflies;
+    [SerializeField] GameObject sun;
 
     //[SerializeField] AnimationClip swapToFireAnim;
 

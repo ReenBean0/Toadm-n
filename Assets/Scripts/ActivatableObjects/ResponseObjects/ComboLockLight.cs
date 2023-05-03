@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ComboLockLight : ObjectResponse
 {
@@ -16,6 +17,7 @@ public class ComboLockLight : ObjectResponse
     {
         spriteRender = GetComponent<SpriteRenderer>();
         spriteRender.color = offColour;
+        GetComponent<Light2D>().color = offColour;
     }
 
     public override void Interact()
@@ -42,6 +44,7 @@ public class ComboLockLight : ObjectResponse
     public void TurnOn()
     {
         spriteRender.color = onColour;
+        GetComponent<Light2D>().color = onColour;
 
         bool allLocks = true;
         // If other locks are active or 'unlocked' then trigger target object
