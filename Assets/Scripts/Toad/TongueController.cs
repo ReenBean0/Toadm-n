@@ -70,6 +70,8 @@ public class TongueController : MonoBehaviour
 
     IEnumerator AnimateTongue(GameObject tongue, float distance)
     {
+        GetComponent<ToadSFXController>().PlayRandomTongueWhip();
+
         // Enable cooldown so tongue can't be spammed
         tongueCooldown = true;
 
@@ -90,6 +92,8 @@ public class TongueController : MonoBehaviour
         // If here - animation is complete
         // Set final scale of tongue
         tongue.transform.localScale = new Vector3(distance, 1, 1);
+
+        GetComponent<ToadSFXController>().PlayTongueHit();
 
         // Wait before reversing animation
         yield return new WaitForSeconds(animationPauseBeforeReversing);

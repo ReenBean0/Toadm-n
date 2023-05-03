@@ -82,6 +82,12 @@ public class LeapingController : MonoBehaviour
 
         if (leftDistance < 1 || rightDistance < 1)
         {
+            // Toad is on floor
+            if (startLeap == true)
+            {
+                // If toad was previously not on floor
+                GetComponent<ToadSFXController>().PlayFloorHit();
+            }
             startLeap = false;
         }
         else
