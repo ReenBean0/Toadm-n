@@ -9,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class TongueController : MonoBehaviour
 {
+    [SerializeField] Sprite baseFrog;
+    [SerializeField] Sprite openMouth;
+    private SpriteRenderer spriteRenderer;
     [SerializeField] GameObject flyCursor;
     [SerializeField] GameObject tonguePrefab;
     [SerializeField] float animationSpeed;
@@ -29,6 +32,7 @@ public class TongueController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         flyTransform = flyCursor.GetComponent<Transform>();
         tongueCooldown = false;
     }
@@ -65,6 +69,8 @@ public class TongueController : MonoBehaviour
 
         // Stretch tongue (multiplied by two because of the size of the prefab)
         float distance = Vector2.Distance(tongueInstance.transform.position, targetPos) * 2;
+
+        spriteRenderer.sprite = openMouth;
         StartCoroutine(AnimateTongue(tongueInstance, distance));
     }
 
@@ -128,6 +134,7 @@ public class TongueController : MonoBehaviour
         // Be gone foul tongue
         Destroy(tongue);
         tongueCooldown = false;
+        spriteRenderer.sprite = baseFrog;
     }
 
     //added for moveable objects by Yin
