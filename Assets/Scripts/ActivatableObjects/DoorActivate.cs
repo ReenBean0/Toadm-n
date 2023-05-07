@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorActivate : MonoBehaviour, IActivatableObject
 {
@@ -16,6 +17,7 @@ public class DoorActivate : MonoBehaviour, IActivatableObject
         {
             // level complete
             Debug.Log("Level complete");
+            SceneManager.LoadScene("Menu");
         }
     }
 }
