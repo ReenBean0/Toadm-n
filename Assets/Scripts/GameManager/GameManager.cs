@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,11 +25,43 @@ public class GameManager : MonoBehaviour
      */
     public static GameManager instance { get; private set; }
 
+    DateTime startTime;
+    double elapsedTimeInSeconds;
+    DateTime currentTime;
+
+    public bool isLevelComplete;
+
     private void Awake()
     {
         if (instance == null) 
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        startTime = DateTime.UtcNow;
+        elapsedTimeInSeconds = 0;
+        isLevelComplete = false;
+    }
+
+    private void Update()
+    {
+        if (!isLevelComplete)
+        {
+            currentTime = DateTime.UtcNow;
+            elapsedTimeInSeconds = currentTime.Subtract(startTime).TotalSeconds;
+        }
+    }
+
+    public double GetTimeElapsed()
+    {
+        return elapsedTimeInSeconds;
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
