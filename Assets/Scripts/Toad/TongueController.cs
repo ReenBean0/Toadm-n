@@ -17,6 +17,7 @@ public class TongueController : MonoBehaviour
     [SerializeField] GameObject tonguePrefab;
     [SerializeField] float animationSpeed = 200f;
     [SerializeField] float animationPauseBeforeReversing = 0.3f;
+    [SerializeField] float maxDistance = 40f;
 
     // Serialized so the cooldown status can be seen in the editor
     [SerializeField] bool tongueCooldown;
@@ -64,6 +65,11 @@ public class TongueController : MonoBehaviour
 
         // Stretch tongue (multiplied by two because of the size of the prefab)
         float distance = Vector2.Distance(tongueInstance.transform.position, targetPos) * 2;
+
+        if (distance > maxDistance)
+        {
+            distance = maxDistance;
+        }
 
         spriteRenderer.sprite = openMouth;
         StartCoroutine(AnimateTongue(tongueInstance, distance));
