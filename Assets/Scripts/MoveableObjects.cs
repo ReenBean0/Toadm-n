@@ -24,10 +24,10 @@ public class MoveableObjects : MonoBehaviour
             float yMovement = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
             //moves the flies
             transform.Translate(xMovement, yMovement, 0, Space.World);
-            toad.GetComponent<TongueController>().ChangeTonguePosition(xMovement, yMovement);
+            //toad.GetComponent<TongueController>().ChangeTonguePosition(xMovement, yMovement);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                toad.GetComponent<TongueController>().FinishMoveableObject();
+                //toad.GetComponent<TongueController>().FinishMoveableObject();
                 trigger = false;
             }
         }
@@ -36,7 +36,7 @@ public class MoveableObjects : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Tongue"))
         {
-            toad.GetComponent<TongueController>().TriggerMoveableObject();
+            //toad.GetComponent<TongueController>().TriggerMoveableObject();
             trigger = true;
         }
     }

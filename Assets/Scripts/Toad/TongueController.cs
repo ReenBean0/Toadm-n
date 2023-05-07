@@ -9,14 +9,14 @@ using UnityEngine;
 /// </summary>
 public class TongueController : MonoBehaviour
 {
-    [SerializeField] float tongueRatio = 0.15f;
+    [SerializeField] float tongueRatio = 1f;
     [SerializeField] Sprite baseFrog;
     [SerializeField] Sprite openMouth;
     private SpriteRenderer spriteRenderer;
     [SerializeField] GameObject flyCursor;
     [SerializeField] GameObject tonguePrefab;
-    [SerializeField] float animationSpeed;
-    [SerializeField] float animationPauseBeforeReversing;
+    [SerializeField] float animationSpeed = 200f;
+    [SerializeField] float animationPauseBeforeReversing = 0.3f;
 
     // Serialized so the cooldown status can be seen in the editor
     [SerializeField] bool tongueCooldown;
@@ -27,8 +27,7 @@ public class TongueController : MonoBehaviour
 
     GameObject tongueInstance;
 
-    //added for moveable objects by Yin
-    bool reverse = true;
+    bool interrupt;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +35,7 @@ public class TongueController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         flyTransform = flyCursor.GetComponent<Transform>();
         tongueCooldown = false;
+        interrupt = false;
     }
 
     // Update is called once per frame
@@ -47,11 +47,6 @@ public class TongueController : MonoBehaviour
             flyY = flyTransform.position.y;
             Debug.Log($"Launch tongue at X={flyX}, y={flyY}");
 
-            // Temporarily use mouse position
-            //Vector3 mousePosition = Input.mousePosition;
-            //mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            //Debug.Log($"Launch tongue at X={mousePosition.x}, y={mousePosition.y}");
-
             Vector3 tongueDestination = new Vector3(flyX, flyY, 1);
             LaunchTongue(tongueDestination);
         }
@@ -60,7 +55,6 @@ public class TongueController : MonoBehaviour
     void LaunchTongue(Vector3 targetPos)
     {
         // Spawn tongue
-        //tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y, 1), Quaternion.identity);
         tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y+0.1f, -1), Quaternion.identity);
 
         // Rotate tongue to face target point
@@ -77,6 +71,8 @@ public class TongueController : MonoBehaviour
 
     IEnumerator AnimateTongue(GameObject tongue, float distance)
     {
+        GetComponent<ToadSFXController>().PlayRandomTongueWhip();
+
         // Enable cooldown so tongue can't be spammed
         tongueCooldown = true;
 
@@ -86,6 +82,10 @@ public class TongueController : MonoBehaviour
         // Scale tongue until target size is reached
         while (tongue.transform.localScale.x < distance)
         {
+            if (interrupt)
+            {
+                break;
+            }
             // Calculate new scale based on elapsed time and speed
             float newScale = tongue.transform.localScale.x + (animationSpeed * Time.deltaTime);
             tongue.transform.localScale = new Vector3(newScale, applyTongueRatio(newScale), 1);
@@ -93,20 +93,16 @@ public class TongueController : MonoBehaviour
             // Pause coroutine until next frame
             yield return null;
         }
-
+        interrupt = false;
         // If here - animation is complete
         // Set final scale of tongue
-        tongue.transform.localScale = new Vector3(distance, applyTongueRatio(distance), 1);
+        //tongue.transform.localScale = new Vector3(distance, applyTongueRatio(distance), 1);
+
+        GetComponent<ToadSFXController>().PlayTongueHit();
 
         // Wait before reversing animation
         yield return new WaitForSeconds(animationPauseBeforeReversing);
-        //yield return StartCoroutine(AnimateTongueReverse(tongue));
-        //added for moveable objects by Yin
-        while (!reverse)
-        {
-            //if touch a moveable object
-            yield return null;
-        }
+
         yield return StartCoroutine(AnimateTongueReverse(tongue));
     }
 
@@ -134,23 +130,14 @@ public class TongueController : MonoBehaviour
         spriteRenderer.sprite = baseFrog;
     }
 
-    //added for moveable objects by Yin
-    public void TriggerMoveableObject()
-    {
-        reverse = false;
-    }
-    public void FinishMoveableObject()
-    {
-        reverse = true;
-    }
-    public void ChangeTonguePosition(float xMovement, float yMovement)
-    {
-
-    }
-
     private float applyTongueRatio(float scale)
     {
         float result = scale * tongueRatio;
         return Mathf.Min(result, 12);
+    }
+
+    public void InterruptAnimation()
+    {
+        interrupt = true;
     }
 }
