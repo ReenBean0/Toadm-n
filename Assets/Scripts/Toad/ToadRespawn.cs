@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class ToadRespawn : MonoBehaviour
 {
-    Vector3 originPos;
+    [SerializeField] GameObject currentCheckpoint;
+
+    int deaths;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        deaths = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnterCheckpoint(GameObject checkpoint)
     {
-        //reset position to before leap if fall below platform
-        if (transform.position.y < -5)
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            transform.position = originPos;
-        }
+        currentCheckpoint = checkpoint;
     }
-    public void SavePosition(Vector3 pos)
+
+    public void IsThisDarkSoulsQuestionMark()
     {
-        originPos = pos;
+        deaths++;
+        Debug.Log($"Deaths: {deaths}");
+        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        transform.position = currentCheckpoint.GetComponent<Checkpoint>().GetRespawnPosition();
+    }
+
+    public int GetDeaths()
+    {
+        return deaths;
     }
 }

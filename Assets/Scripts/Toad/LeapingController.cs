@@ -45,7 +45,6 @@ public class LeapingController : MonoBehaviour
         //if player press the toadman
         if (!startLeap)
         {
-            GetComponent<ToadRespawn>().SavePosition(transform.position);
             LeapMode = true;
         }
     }
