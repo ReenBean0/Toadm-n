@@ -22,6 +22,7 @@ public class ToadRespawn : MonoBehaviour
     public void IsThisDarkSoulsQuestionMark()
     {
         deaths++;
+        GameManager.instance.totalDeaths++;
         Debug.Log($"Deaths: {deaths}");
         GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         transform.position = currentCheckpoint.GetComponent<Checkpoint>().GetRespawnPosition();

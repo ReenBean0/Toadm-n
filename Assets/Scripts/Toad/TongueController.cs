@@ -22,6 +22,8 @@ public class TongueController : MonoBehaviour
     // Serialized so the cooldown status can be seen in the editor
     [SerializeField] bool tongueCooldown;
 
+    int numberOfLicks;
+
     Transform flyTransform;
     float flyX;
     float flyY;
@@ -30,6 +32,11 @@ public class TongueController : MonoBehaviour
 
     bool interrupt;
 
+    public int GetNumberOfLicks()
+    {
+        return numberOfLicks;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +44,7 @@ public class TongueController : MonoBehaviour
         flyTransform = flyCursor.GetComponent<Transform>();
         tongueCooldown = false;
         interrupt = false;
+        numberOfLicks = 0;
     }
 
     // Update is called once per frame
@@ -57,6 +65,9 @@ public class TongueController : MonoBehaviour
     {
         // Spawn tongue
         tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y+0.1f, -1), Quaternion.identity);
+
+        numberOfLicks++;
+        GameManager.instance.totalLicks++;
 
         // Rotate tongue to face target point
         Vector3 direction = targetPos - transform.position;
