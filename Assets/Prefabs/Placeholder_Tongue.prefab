@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5309298986307354453}
   - component: {fileID: -3548462973404638439}
   - component: {fileID: 8710883604090332829}
+  - component: {fileID: 1609118557439403203}
   m_Layer: 0
   m_Name: Placeholder_Tongue
   m_TagString: Untagged
@@ -132,7 +133,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25, y: 0}
+  m_Offset: {x: 0.25, y: 0.019729007}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -143,7 +144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 0.5, y: 0.09788809}
   m_EdgeRadius: 0
 --- !u!50 &8710883604090332829
 Rigidbody2D:
@@ -166,6 +167,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1609118557439403203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5839995864075163192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abb43ecb99d73f42b1c094e405b0b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6717863907501937794
 GameObject:
   m_ObjectHideFlags: 0
