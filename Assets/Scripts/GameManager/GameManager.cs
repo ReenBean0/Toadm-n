@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +34,10 @@ public class GameManager : MonoBehaviour
 
     public bool isLevelComplete;
 
+    string levelName;
+    int toadsEarnedForThisLevel;
+    double bestTimeForThisLevel;
+
     private void Awake()
     {
         if (instance == null) 
@@ -44,6 +51,8 @@ public class GameManager : MonoBehaviour
         startTime = DateTime.UtcNow;
         elapsedTimeInSeconds = 0;
         isLevelComplete = false;
+        levelName = SceneManager.GetActiveScene().name;
+        LoadData();
     }
 
     private void Update()
@@ -63,5 +72,68 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void LevelComplete()
+    {
+        isLevelComplete = true;
+        int toadsToSave = toadsEarnedForThisLevel;
+        double timeToSave = bestTimeForThisLevel;
+        if (elapsedTimeInSeconds < bestTimeForThisLevel || bestTimeForThisLevel == 0.00)
+        {
+            timeToSave = elapsedTimeInSeconds;
+        }
+        SaveData(timeToSave, toadsToSave);
+    }
+
+    void SaveData(double time, int toads)
+    {
+        StreamReader reader = new StreamReader("LevelData.txt");
+        string data = reader.ReadLine();
+        string[] dataArray = data.Split('/');
+        reader.Close();
+
+        switch (levelName)
+        {
+            case "Dark_Level":
+                dataArray[1] = time.ToString("0.00");
+                dataArray[2] = toads.ToString();
+                break;
+            case "Push-Pull":
+                dataArray[4] = time.ToString("0.00");
+                dataArray[5] = toads.ToString();
+                break;
+            case "Multi-Press":
+                dataArray[7] = time.ToString("0.00");
+                dataArray[8] = toads.ToString();
+                break;
+        }
+
+        StreamWriter writer = new StreamWriter("LevelData.txt", false);
+        foreach (string s in dataArray)
+        {
+            writer.Write(s);
+            writer.Write("/");
+        }
+        writer.Close();
+    }
+
+    void LoadData()
+    {
+        StreamReader reader = new StreamReader("LevelData.txt");
+        string data = reader.ReadLine();
+        reader.Close();
+
+        string[] dataArray = data.Split('/');
+        for (int i = 0; i < dataArray.Length; i += 3)
+        {
+            if (dataArray[i] == levelName)
+            {
+                bestTimeForThisLevel = double.Parse(dataArray[i + 1]);
+                toadsEarnedForThisLevel = int.Parse(dataArray[i + 2]);
+            }
+        }
+
+        Debug.Log($"Current level: {levelName} | Best time: {bestTimeForThisLevel} | Toads earned: {toadsEarnedForThisLevel}");
     }
 }

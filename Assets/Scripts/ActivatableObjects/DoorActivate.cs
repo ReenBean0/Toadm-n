@@ -21,7 +21,7 @@ public class DoorActivate : MonoBehaviour, IActivatableObject
         {
             // level complete
             Debug.Log("Level complete");
-            GameManager.instance.isLevelComplete = true;
+            GameManager.instance.LevelComplete();
 
             TextMeshProUGUI deathsText = winScreen.transform.Find("Panel").transform.Find("DeathsText").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI timeText = winScreen.transform.Find("Panel").transform.Find("TimeText").GetComponent<TextMeshProUGUI>();
