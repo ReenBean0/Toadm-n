@@ -66,9 +66,6 @@ public class TongueController : MonoBehaviour
         // Spawn tongue
         tongueInstance = Instantiate(tonguePrefab, new Vector3(transform.position.x, transform.position.y+0.1f, -1), Quaternion.identity);
 
-        numberOfLicks++;
-        GameManager.instance.totalLicks++;
-
         // Rotate tongue to face target point
         Vector3 direction = targetPos - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -116,6 +113,8 @@ public class TongueController : MonoBehaviour
         //tongue.transform.localScale = new Vector3(distance, applyTongueRatio(distance), 1);
 
         GetComponent<ToadSFXController>().PlayTongueHit();
+        numberOfLicks++;
+        GameManager.instance.totalLicks++;
 
         // Wait before reversing animation
         yield return new WaitForSeconds(animationPauseBeforeReversing);

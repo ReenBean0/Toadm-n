@@ -12,7 +12,7 @@ public class DoorActivate : MonoBehaviour, IActivatableObject
 
     public void Interact()
     {
-        isOpen = true;
+        isOpen = !isOpen;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

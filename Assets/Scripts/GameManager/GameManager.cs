@@ -79,8 +79,8 @@ public class GameManager : MonoBehaviour
 
         caveToadRequirements = new ToadRequirements();
         caveToadRequirements.toad1 = 3; // less than 3 deaths
-        caveToadRequirements.toad2 = 180; // less than 250 seconds
-        caveToadRequirements.toad3 = 8; // less than 8 licks
+        caveToadRequirements.toad2 = 180; // less than 180 seconds
+        caveToadRequirements.toad3 = 15; // less than 15 licks
 
         pushToadRequirements = new ToadRequirements();
         pushToadRequirements.toad1 = 1; // less than 1 deaths
@@ -214,6 +214,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log($"Licks: {totalLicks}");
 
         return toads;
     }
