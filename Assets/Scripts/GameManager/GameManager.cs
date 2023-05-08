@@ -171,7 +171,10 @@ public class GameManager : MonoBehaviour
         foreach (string s in dataArray)
         {
             writer.Write(s);
-            writer.Write("/");
+            if (s != "")
+            {
+                writer.Write("/");
+            }
         }
         writer.Close();
     }
