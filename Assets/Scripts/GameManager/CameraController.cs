@@ -117,8 +117,8 @@ public class CameraController : MonoBehaviour
         }
 
         // Animation complete
-        camTransform.position = targetPosition;
-        camera.orthographicSize = targetScale;
+        //camTransform.position = targetPosition;
+        //camera.orthographicSize = targetScale;
         isCameraMoving = false;
     }
 
