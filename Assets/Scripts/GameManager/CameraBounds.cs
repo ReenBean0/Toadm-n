@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,6 +12,8 @@ public class CameraBounds : MonoBehaviour
 
     [SerializeField] List<GameObject> activateObjects;
     [SerializeField] float activateObjectsDelay;
+    [SerializeField] GameObject ambientSource;
+    [SerializeField] AudioClip ambientAudioClip;
 
     CameraController cameraController;
 
@@ -45,6 +48,16 @@ public class CameraBounds : MonoBehaviour
             if (activateObjects != null)
             {
                 StartCoroutine(ActivateObjects());
+            }
+
+            if (ambientAudioClip != null)
+            {
+                AudioSource ambience = ambientSource.GetComponent<AudioSource>();
+                if (ambience.clip != ambientAudioClip)
+                {
+                    ambience.clip = ambientAudioClip;
+                    ambience.Play();
+                }
             }
         }
     }
