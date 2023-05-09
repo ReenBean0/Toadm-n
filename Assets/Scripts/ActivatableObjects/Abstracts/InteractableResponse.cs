@@ -40,7 +40,6 @@ public abstract class InteractableResponse : Interactable
         }
         isActive = true;
     }
-
     public void RemoveObjectFromRisingEdge(GameObject objectToRemove)
     {
         if (risingEdgeTargets != null)

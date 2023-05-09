@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4006812227890433768}
   - component: {fileID: 4006812227890433774}
   - component: {fileID: 4006812227890433773}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door_Entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  winScreen: {fileID: 0}
+  toad: {fileID: 0}
 --- !u!61 &4006812227890433773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4006812228448850627}
   - component: {fileID: 4006812228448850626}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door_Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +222,7 @@ GameObject:
   - component: {fileID: 4006812229338797659}
   - component: {fileID: 4006812229338797657}
   - component: {fileID: 4006812229338797658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4006812229821987492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

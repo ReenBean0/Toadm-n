@@ -107,7 +107,6 @@ public class TongueController : MonoBehaviour
             // Pause coroutine until next frame
             yield return null;
         }
-        interrupt = false;
         // If here - animation is complete
         // Set final scale of tongue
         //tongue.transform.localScale = new Vector3(distance, applyTongueRatio(distance), 1);
@@ -144,6 +143,8 @@ public class TongueController : MonoBehaviour
         Destroy(tongue);
         tongueCooldown = false;
         spriteRenderer.sprite = baseFrog;
+
+        interrupt = false;
     }
 
     private float applyTongueRatio(float scale)
