@@ -4,6 +4,12 @@ using UnityEngine;
 using static Unity.VisualScripting.AnnotationUtility;
 using UnityEngine.UIElements;
 
+/* Written by Rian
+ * A reworking of the code found in Henry's interactable devices
+ * This rework aims to simplify that code, using abstraction to 
+ * make it more readable and easier to build levels with.
+ */
+
 public abstract class ObjectResponse : Interactable
 {
     [SerializeField] protected float animSpeed = 5;

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/* Written by Rian
+ * A rework of Henry's code "InteractableDevice"
+ * Specifically for handles, used on pullable/draggable objects
+ */
 public class Handle : InteractableResponse
 {
     public enum Direction { LEFT, RIGHT }

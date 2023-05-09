@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Written by Rian
+ * A rework of Henry's code "Movable Object"
+ */
+
 public class MovingObjectNew : ObjectResponse
 {
     [SerializeField] float pauseBeforeMove;

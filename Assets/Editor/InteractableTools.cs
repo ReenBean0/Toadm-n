@@ -2,6 +2,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//Made by Rian
+//Adds a UI element to the unity editor to make setting object destinations quicker
+
 [CustomEditor(typeof(Interactable), true)]
 class InteractableTools : Editor
 {

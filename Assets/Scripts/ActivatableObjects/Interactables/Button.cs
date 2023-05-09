@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Written by Rian
+ * A rework of Henry's code "InteractableDevice"
+ * Specifically for buttons
+ */
+
 public class Button : InteractableResponse
 {
     private bool sittingOnButton = false;

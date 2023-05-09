@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Written by Rian
+ * A rework of Henry's code "Movable Object"
+ * Refers to a pullable/draggable object. In the report this would be
+ * the object which travels along a path of nodes
+ */
+
+
 public class PullableObject : ObjectResponse
 {
 

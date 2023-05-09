@@ -4,6 +4,10 @@ using UnityEngine;
 using static Unity.VisualScripting.AnnotationUtility;
 using UnityEngine.UIElements;
 
+/* Written by Rian
+ * A rework of Henry's code "InteractableDevice"
+ * specifically for switches
+ */
 public class Switch : InteractableResponse
 {
     [SerializeField] bool isPermanent;
