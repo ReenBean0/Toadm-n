@@ -17,6 +17,7 @@ public class PullableObject : ObjectResponse
 
     public override void Start()
     {
+        base.Start();
         transform.localPosition = anchors[PlatformPosition].gameObject.transform.localPosition;
     }
 
@@ -27,7 +28,7 @@ public class PullableObject : ObjectResponse
         {
             isActive = true;
             Debug.Log("moving to " + anchors[PlatformPosition].transform.position);
-            StartCoroutine(MoveToPosition(anchors[PlatformPosition].transform.localPosition, transform.localRotation, true));
+            StartCoroutine(MoveToPosition(anchors[PlatformPosition].transform.localPosition, offRotation, offScale, true));
         }
     }
 }

@@ -22,12 +22,12 @@ public class MovingObjectNew : ObjectResponse
         if (isActive)
         {
             isActive = false;
-            StartCoroutine(MoveToPosition(offPosition, offRotation));
+            StartCoroutine(MoveToPosition(offPosition, offRotation, offScale));
         }
         else
         {
             isActive = true;
-            StartCoroutine(MoveToPosition(onPosition, onRotation));
+            StartCoroutine(MoveToPosition(onPosition, onRotation, onScale));
         }
     }
 }

@@ -37,7 +37,7 @@ Transform:
   - {fileID: 804318478943155354}
   - {fileID: 7834769673919107586}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2185913423470782324
 MonoBehaviour:
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 60
   moveSpeed: 10
+  lockMovement: 0
 --- !u!114 &615425004198544667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +338,10 @@ PrefabInstance:
     - target: {fileID: 547535158538299938, guid: d96a0c982e6e3404ba5e8fac8094cd52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8793438716196648401, guid: d96a0c982e6e3404ba5e8fac8094cd52, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8835394492412745313, guid: d96a0c982e6e3404ba5e8fac8094cd52, type: 3}
       propertyPath: m_Name

@@ -9,10 +9,12 @@ using UnityEngine;
  */
 public abstract class Interactable : MonoBehaviour, IActivatableObject
 {
-    [SerializeField] public Vector3 onPosition;
-    [SerializeField] public Quaternion onRotation;
+    [SerializeField] protected Vector3 onPosition;
+    [SerializeField] protected Quaternion onRotation;
+    [SerializeField] protected Vector3 onScale;
     protected Vector3 offPosition;
     protected Quaternion offRotation;
+    protected Vector3 offScale;
 
     public bool isActive = false;
 
@@ -35,11 +37,20 @@ public abstract class Interactable : MonoBehaviour, IActivatableObject
         }
     }
 
+    private void OnValidate()
+    {
+        if(onScale == Vector3.zero)
+        {
+            onScale = transform.localScale;
+        }
+    }
+
     // Start is called before the first frame update
     public virtual void Start()
     {
         offPosition = gameObject.transform.localPosition;
         offRotation = gameObject.transform.localRotation;
+        offScale = gameObject.transform.localScale;
     }
 
     void CameraEvent()
