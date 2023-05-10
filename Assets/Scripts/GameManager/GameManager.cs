@@ -141,13 +141,15 @@ public class GameManager : MonoBehaviour
         {
             toadsToSave = toadsEarnedNow;
         }
-        //SaveData(timeToSave, toadsToSave);
+        SaveData(timeToSave, toadsToSave);
     }
 
     void SaveData(double time, int toads)
     {
+        TextAsset levelDataFile = Resources.Load<TextAsset>("LevelData");
         StreamReader reader = new StreamReader("LevelData.txt");
         string data = reader.ReadLine();
+        //string data = levelDataFile.text;
         string[] dataArray = data.Split('/');
         reader.Close();
 
@@ -167,6 +169,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+        
         StreamWriter writer = new StreamWriter("LevelData.txt", false);
         foreach (string s in dataArray)
         {
