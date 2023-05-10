@@ -61,7 +61,7 @@ public class FireProjectile : ObjectResponse
         if (isProjectileAlive)
         {
             isProjectileAlive = false;
-            GameManager.instance.GetComponent<CameraController>().MoveCameraBackToPreviousPosition();
+            GameManager.instance.GetComponent<CameraController>().MoveBackToCurrentCameraBound();
             Destroy(projectileInstance);
         }
     }

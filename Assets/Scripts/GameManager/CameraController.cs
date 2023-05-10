@@ -39,6 +39,12 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void MoveBackToCurrentCameraBound()
+    {
+        camera.transform.parent = null;
+        StartCoroutine(AnimateCameraToPos(currentBound.TargetCamPos, currentBound.TargetScale));
+    }
+
     /// <summary>
     /// Animate camera back to last recorded position and disconnect transform from a parent
     /// </summary>
@@ -137,6 +143,6 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSecondsRealtime(pauseDuration);
 
         // Return to previous position
-        yield return StartCoroutine(AnimateCameraToPos(previousCamPos, previousCamScale));
+        MoveBackToCurrentCameraBound();
     }
 }
