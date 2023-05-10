@@ -32,7 +32,7 @@ Transform:
   - {fileID: 8552391426409803654}
   - {fileID: 2207402003829955236}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8793438716196648401
 SpriteRenderer:
@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWing
       objectReference: {fileID: 0}
+    - target: {fileID: 6145556110770319856, guid: 269f824636f36cb4d9be6e480da8cfda, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 976eb0eeeece55247bd693401eb3a3e5, type: 2}
     - target: {fileID: 8233044846353479609, guid: 269f824636f36cb4d9be6e480da8cfda, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -202,6 +206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1123017229438321233, guid: cd8c146f26ba21b4cae77976a5db648b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d43ff37f84722fd4690c706c097e8377, type: 2}
     - target: {fileID: 2985080683050658048, guid: cd8c146f26ba21b4cae77976a5db648b, type: 3}
       propertyPath: m_Name
       value: RightWing

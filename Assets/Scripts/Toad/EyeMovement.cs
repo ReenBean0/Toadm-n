@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class EyeMovement : MonoBehaviour
@@ -9,6 +8,14 @@ public class EyeMovement : MonoBehaviour
     [SerializeField] GameObject targetObject;
     [SerializeField] float rotationSpeed = 10f;
     //this can be changed to make the eyes rotate faster or slower to make it more natural
+
+    private void Start()
+    {
+        if(!isFly)
+        {
+            targetObject = GetComponentInParent<TongueController>().flyCursor;
+        }    
+    }
 
     void Update()
     {

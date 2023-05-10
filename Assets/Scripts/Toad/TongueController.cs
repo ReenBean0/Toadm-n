@@ -13,7 +13,7 @@ public class TongueController : MonoBehaviour
     [SerializeField] Sprite baseFrog;
     [SerializeField] Sprite openMouth;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] GameObject flyCursor;
+    [SerializeField] public GameObject flyCursor;
     [SerializeField] GameObject tonguePrefab;
     [SerializeField] float animationSpeed = 200f;
     [SerializeField] float animationPauseBeforeReversing = 0.3f;
