@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+/// <summary>
+/// Hub for controlling the toad sounds
+/// - Henry Paul
+/// </summary>
 public class ToadSFXController : MonoBehaviour
 {
     AudioSource audioSource;
@@ -32,6 +36,11 @@ public class ToadSFXController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays the ribbit sound, I have no idea if there's an actual name for this sound that they make but ribbit works fine
+    /// </summary>
+    /// <param name="ribbitCooldown">time in seconds before toad can ribbit again</param>
+    /// <returns></returns>
     public IEnumerator Ribbit(int ribbitCooldown)
     {
         Debug.Log("ribbit");
@@ -41,22 +50,34 @@ public class ToadSFXController : MonoBehaviour
         canRibbit = true;
     }
 
+    /// <summary>
+    /// Called when toad hits floor in leapingcontroller script
+    /// </summary>
     public void PlayFloorHit()
     {
         audioSource.PlayOneShot(floorHit);
     }
 
+    /// <summary>
+    /// Play a knock sound when toad hits an object that isn't landing on a platform
+    /// </summary>
     public void PlayCollisionSound()
     {
         audioSource.PlayOneShot(collision);
     }
 
+    /// <summary>
+    /// Play a random noise from a selection of 'whips' when the tongue is fired, called in tonguecontroller
+    /// </summary>
     public void PlayRandomTongueWhip()
     {
         int rnd = Random.Range(0, tongueWhipSounds.Count);
         audioSource.PlayOneShot(tongueWhipSounds[rnd]);
     }
 
+    /// <summary>
+    /// Called in tongue controller when tongue hits something
+    /// </summary>
     public void PlayTongueHit()
     {
         audioSource.PlayOneShot(tongueHit);

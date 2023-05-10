@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// - Joshua Booth
+/// </summary>
 public class EyeMovement : MonoBehaviour
 {
     [SerializeField] bool isFly = false;

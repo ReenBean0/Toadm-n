@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Cave level specific - when the fired projectile hits this trigger, the chain "breaks", 
+/// allowing the door to be opened without pulling the platform back in (which would usually stop the player from being able to actually get back up again)
+/// - Henry Paul
+/// </summary>
 public class ChainBreakTrigger : MonoBehaviour
 {
     [SerializeField] GameObject leftHandle;

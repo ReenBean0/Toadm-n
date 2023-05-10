@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// The confusingly named "ComboLockLight" was designed specifically for the cave level
+/// There are three of them that are enabled when a red object moves into the "lock" turning the light green
+/// When all lights are green, a door opens
+/// - Henry Paul
+/// </summary>
 public class ComboLockLight : ObjectResponse
 {
     [SerializeField] Color offColour;

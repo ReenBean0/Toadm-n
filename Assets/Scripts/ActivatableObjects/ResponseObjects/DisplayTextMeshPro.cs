@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Used in the cave level to display the text that appears as the trapdoor opens, revealing the dark scary cave
+/// - Henry Paul
+/// </summary>
 public class DisplayTextMeshPro : ObjectResponse
 {
     [SerializeField] List<GameObject> textPrefabs;

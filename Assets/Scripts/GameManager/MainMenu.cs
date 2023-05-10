@@ -4,6 +4,11 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// The mainest of the menus
+/// Don't know what to say, speaks for itself really
+/// - Henry Paul
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject caveDropdown;
@@ -46,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadData()
     {
+        // load level scores for level select UI
         StreamReader reader = new StreamReader("LevelData.txt");
         string data = reader.ReadLine();
         reader.Close();

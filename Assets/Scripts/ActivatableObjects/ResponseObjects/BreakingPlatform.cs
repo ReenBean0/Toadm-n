@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Special kind of platform that breaks after stepping on it if you couldn't guess that already
+/// - Henry Paul
+/// </summary>
 public class BreakingPlatform : MonoBehaviour
 {
     [SerializeField] float animIntensity;
@@ -20,6 +24,7 @@ public class BreakingPlatform : MonoBehaviour
     {
         if (breaking)
         {
+            // Do a little wobble a little shake oooo
             float x = startPos.x + Mathf.Sin(Time.time * animSpeed) * animIntensity;
             transform.parent.position = new Vector3(x, transform.parent.position.y, transform.parent.position.z);
         }

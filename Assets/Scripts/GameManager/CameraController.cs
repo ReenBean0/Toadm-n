@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Controls... the camera
+/// Keeps track of the last camera position and the last camera bound the player stepped into
+/// Has multiple public methods to animate the camera
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Camera camera;
@@ -29,6 +34,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        // Move flies with camera so they don't get left behind
         if (isCameraMoving)
         {
             flies.transform.parent = camera.transform;
@@ -39,6 +45,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Animate camera back to the target position and scale of the current camera bound
+    /// </summary>
     public void MoveBackToCurrentCameraBound()
     {
         camera.transform.parent = null;

@@ -4,6 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// Used in the cave level to swap to the fireflies prefab and enable the light
+/// - Henry Paul
+///     - Edited by Rian to change the whole model instead of relying on the animation to change the sprite
+/// </summary>
 public class FlySwap : ObjectResponse
 {
     [SerializeField] GameObject standardflies;
@@ -28,6 +33,10 @@ public class FlySwap : ObjectResponse
         
     }
 
+    /// <summary>
+    /// This was originally going to be able to actually swap back to normal flies but... time kind of... got in the way a little bit and I never got round to finishing it
+    /// It still swaps to fireflies though
+    /// </summary>
     public void SwapFlies()
     {
         if (usingFireflies)

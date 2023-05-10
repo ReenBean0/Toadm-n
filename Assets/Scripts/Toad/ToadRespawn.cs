@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Simple script to control the death and respawn of the toad
+/// - Henry Paul
+/// </summary>
 public class ToadRespawn : MonoBehaviour
 {
     [SerializeField] GameObject currentCheckpoint;
@@ -14,11 +18,19 @@ public class ToadRespawn : MonoBehaviour
         deaths = 0;
     }
 
+    /// <summary>
+    /// Called by a checkpoint trigger
+    /// </summary>
+    /// <param name="checkpoint"></param>
     public void EnterCheckpoint(GameObject checkpoint)
     {
         currentCheckpoint = checkpoint;
     }
 
+    /// <summary>
+    /// whatcanisayimafunnyguy
+    /// Called by the DeathZone script when the toad collides with its trigger (toad dies)
+    /// </summary>
     public void IsThisDarkSoulsQuestionMark()
     {
         deaths++;

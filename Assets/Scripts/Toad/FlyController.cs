@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// - Jackson Turner
+/// </summary>
 public class FlyController : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed; //degrees per second

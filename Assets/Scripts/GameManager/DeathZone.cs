@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Kills the poor little toad if it falls into it
+/// - Henry Paul
+/// </summary>
 public class DeathZone : MonoBehaviour
 {
     [SerializeField] GameObject toad;

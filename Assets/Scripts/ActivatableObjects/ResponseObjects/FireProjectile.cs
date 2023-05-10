@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// In the cave level, this is activated by a button that is locked behind a door in the combo lock section
+/// It instantiates a projectile prefab and updates it's position over the specified lifetime before destroying it
+/// - Henry Paul
+/// </summary>
 public class FireProjectile : ObjectResponse
 {
     [SerializeField] float turnOnDelay;

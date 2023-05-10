@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used to interrupt tongue animation if it hits something that isn't interactable to stop the tongue going through walls
+/// - Henry Paul
+/// </summary>
 public class TongueCollisions : MonoBehaviour
 {
     GameObject toad;

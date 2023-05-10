@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Originally acted as a trigger solely for camera movement, but evolved into more of a generic trigger that covered a range of functions
+///     - Can trigger a camera movement
+///     - Can activate objects
+///     - Can change ambient audio clip
+/// - Henry Paul
+/// </summary>
 public class CameraBounds : MonoBehaviour
 {
     [SerializeField] float targetScale = 5;

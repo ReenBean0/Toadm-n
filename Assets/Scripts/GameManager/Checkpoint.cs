@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  Used as a trigger for the death / respawn system
+///  - Henry Paul
+/// </summary>
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] Vector3 respawnPosition;

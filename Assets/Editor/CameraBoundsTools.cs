@@ -5,6 +5,10 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Adds two buttons to editor to make camera bounds setup less painful
+/// - Henry Paul
+/// </summary>
 [CustomEditor(typeof(CameraBounds), true)]
 public class CameraBoundsTools : Editor
 {

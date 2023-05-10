@@ -6,6 +6,7 @@ using UnityEngine;
 /// Script that, believe it or not, controls the tongue
 /// Currently allows player to shoot tongue at a target location using the spacebar
 ///  - Henry Paul
+///  - Also edited by Rian to fix a bug with the tongue interruptions
 /// </summary>
 public class TongueController : MonoBehaviour
 {

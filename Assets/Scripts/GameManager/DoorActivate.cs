@@ -4,6 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controls the level completion door and what happens when the player enters it or if the player can enter it yet
+/// - Henry Paul
+/// </summary>
 public class DoorActivate : MonoBehaviour, IActivatableObject
 {
     [SerializeField] bool isOpen;
@@ -23,6 +27,7 @@ public class DoorActivate : MonoBehaviour, IActivatableObject
             Debug.Log("Level complete");
             GameManager.instance.LevelComplete();
 
+            // Find all required UI elements in level complete screen
             TextMeshProUGUI deathsText = winScreen.transform.Find("Panel").transform.Find("DeathsText").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI timeText = winScreen.transform.Find("Panel").transform.Find("TimeText").GetComponent<TextMeshProUGUI>();
 
@@ -30,8 +35,10 @@ public class DoorActivate : MonoBehaviour, IActivatableObject
             UnityEngine.UI.Image toad2 = winScreen.transform.Find("Panel").transform.Find("Toad2").GetComponent<UnityEngine.UI.Image>();
             UnityEngine.UI.Image toad3 = winScreen.transform.Find("Panel").transform.Find("Toad3").GetComponent<UnityEngine.UI.Image>();
 
+            // GameManager will determine how many toads have been earned for this level based on performance
             int toadsEarned = GameManager.instance.GetNumberOfToadsEarnedAtEndOfLevel();
 
+            // Update UI elements
             winScreen.GetComponent<Canvas>().enabled = true;
             deathsText.text = ($"Deaths: {toad.GetComponent<ToadRespawn>().GetDeaths()}");
             timeText.text = ($"Time Taken: {GameManager.instance.GetTimeElapsed():0.00}s");
@@ -54,6 +61,7 @@ public class DoorActivate : MonoBehaviour, IActivatableObject
                 }
             }
 
+            // Play animation
             winScreen.GetComponent<Animator>().SetBool("Win?", true);
         }
     }

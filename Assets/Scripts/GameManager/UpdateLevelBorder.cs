@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Used to update the UI elements on the level select screen after the data has been loaded
+/// - Henry Paul
+/// </summary>
 public class UpdateLevelBorder : MonoBehaviour
 {
     [SerializeField] GameObject toad1;

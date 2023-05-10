@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// - Jackson Turner
+/// </summary>
 public class InteractableObjectDetection : MonoBehaviour
 {
     [SerializeField] private float radius;

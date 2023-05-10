@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// Used in the cave level to change the sun intensity when the player enters different sections of the level
+/// - Henry Paul
+/// </summary>
 public class SunTrigger : MonoBehaviour
 {
     [SerializeField] GameObject sun;

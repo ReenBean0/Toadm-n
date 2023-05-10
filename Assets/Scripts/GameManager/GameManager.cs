@@ -9,11 +9,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// Requirements for "starts/trophies/toads" for each level
+    /// </summary>
     public struct ToadRequirements
     {
-        public int toad1;
-        public double toad2;
-        public int toad3;
+        public int toad1; // less than this amount of deaths
+        public double toad2; // less than this number of seconds
+        public int toad3; // less than this amount of licks
     }
 
     /* This is an example of a singleton. This acts as a global
@@ -31,7 +34,8 @@ public class GameManager : MonoBehaviour
      * Of course, you are under no obligation to use it if you prefer
      * abstraction or whatever else, but sometimes it helps to have your
      * game logic and variables in one accessible place.
-     * -Rian
+     * -Rian (created the class with singleton design)
+     * - Populated by Henry Paul
      */
     public static GameManager instance { get; private set; }
 
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
         levelName = SceneManager.GetActiveScene().name;
         LoadData();
 
+        // Set the requirements for each level
         caveToadRequirements = new ToadRequirements();
         caveToadRequirements.toad1 = 3; // less than 3 deaths
         caveToadRequirements.toad2 = 180; // less than 180 seconds
@@ -130,27 +135,43 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    /// <summary>
+    /// Called by door activation script when the player enters the door
+    /// </summary>
     public void LevelComplete()
     {
         isLevelComplete = true;
+        
+        // Begins save process by getting the current best toads and time
         int toadsToSave = bestToadsEarnedForThisLevel;
         double timeToSave = bestTimeForThisLevel;
+
+        // If current time is better than saved time, overwrite timeToSave with current time
         if (elapsedTimeInSeconds < bestTimeForThisLevel || bestTimeForThisLevel == 0.00)
         {
             timeToSave = elapsedTimeInSeconds;
         }
 
+        // If toads earned now is better than saved toads, overwrite toadsToSave
         int toadsEarnedNow = GetNumberOfToadsEarnedAtEndOfLevel();
         if (toadsEarnedNow > bestToadsEarnedForThisLevel)
         {
             toadsToSave = toadsEarnedNow;
         }
+        
+        // Save both values in the leveldata file. If no new best is achieved, this will just re-write the current best
         SaveData(timeToSave, toadsToSave);
     }
 
     void SaveData(double time, int toads)
     {
-        TextAsset levelDataFile = Resources.Load<TextAsset>("LevelData");
+        TextAsset levelDataFile = Resources.Load<TextAsset>("LevelData"); // I'm too scared to delete this line, it was a haily mary fix for an issue found that only exists in the build version
+                                                                          // we know how to properly fix it but heads are too fried. This line didn't end up being the solution, but, removing it may
+                                                                          // or may not break it again, too scared to find out
+
+        // LevelData is a single line in a text file, with each value seperated by '/'
+        // Get the whole line so that specific values can be overwritten where needed, and
+        // the whole line being written again
         StreamReader reader = new StreamReader("LevelData.txt");
         string data = reader.ReadLine();
         //string data = levelDataFile.text;
@@ -205,6 +226,11 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Current level: {levelName} | Best time: {bestTimeForThisLevel} | Toads earned: {bestToadsEarnedForThisLevel}");
     }
 
+    /// <summary>
+    /// Use at end of level
+    /// Determines how many toads the player has unlocked based on their total deaths, time taken and total licks
+    /// </summary>
+    /// <returns>Toads earned for this level in this attempt</returns>
     public int GetNumberOfToadsEarnedAtEndOfLevel()
     {
         int toads = 0;
