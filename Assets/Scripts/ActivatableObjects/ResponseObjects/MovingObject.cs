@@ -6,7 +6,7 @@ using UnityEngine;
  * A rework of Henry's code "Movable Object"
  */
 
-public class MovingObjectNew : ObjectResponse
+public class MovingObject : ObjectResponse
 {
     [SerializeField] float pauseBeforeMove;
 

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8710883604090332829}
   - component: {fileID: 1609118557439403203}
   m_Layer: 0
-  m_Name: Placeholder_Tongue
+  m_Name: Tongue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
