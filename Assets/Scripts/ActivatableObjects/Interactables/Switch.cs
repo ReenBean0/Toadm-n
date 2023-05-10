@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 /* Written by Rian
  * A rework of Henry's code "InteractableDevice"
  * specifically for switches
+ * 
+ * switches have a press duration of -1 because they must be toggled on and off sepereately, so they will never activate risingedge on their own.
  */
 public class Switch : InteractableResponse
 {

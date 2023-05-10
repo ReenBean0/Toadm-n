@@ -39,6 +39,10 @@ public abstract class Interactable : MonoBehaviour, IActivatableObject
 
     private void OnValidate()
     {
+        //This exists because it was added later, and I didn't want to
+        //immediately break all existing interactables, so if the new
+        //onScale variable was empty for them, it should set them to 
+        //whatever their scale currently is (assume that scale doesn't change)
         if(onScale == Vector3.zero)
         {
             onScale = transform.localScale;
@@ -48,6 +52,7 @@ public abstract class Interactable : MonoBehaviour, IActivatableObject
     // Start is called before the first frame update
     public virtual void Start()
     {
+        //assumes that the location of the object is where you want it to start in the level
         offPosition = gameObject.transform.localPosition;
         offRotation = gameObject.transform.localRotation;
         offScale = gameObject.transform.localScale;

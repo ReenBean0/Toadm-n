@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* Written by Rian
- * A rework of Henry's code "Movable Object"
+ * A rework of Henry's code "Movable Object" but using the abstract ObjectResponse class
+ * 
+ * Henry then added the "InteractWithPause" feature
  */
 
 public class MovingObject : ObjectResponse

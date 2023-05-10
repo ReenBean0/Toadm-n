@@ -6,6 +6,8 @@ using UnityEngine;
  * A rework of Henry's code "Movable Object"
  * Refers to a pullable/draggable object. In the report this would be
  * the object which travels along a path of nodes
+ * 
+ * The position is changed by the handles and then Interact is called to move it to the right position.
  */
 
 
