@@ -16,8 +16,6 @@ public class Button : InteractableResponse
         base.Interact();
         if(!isActive)
         {
-            transform.localPosition = onPosition;
-            transform.localRotation = onRotation;
 
             ActivateRisingEdge();
 
@@ -25,8 +23,6 @@ public class Button : InteractableResponse
         }
         else
         {
-            transform.localPosition = offPosition;
-            transform.localRotation = offRotation;
         }
     }
 

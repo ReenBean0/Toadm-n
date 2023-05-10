@@ -22,16 +22,12 @@ public class Switch : InteractableResponse
         base.Interact();
         if (!isActive)
         {
-            transform.localPosition = onPosition;
-            transform.localRotation = onRotation;
             ActivateRisingEdge();
         }
         else
         {
             if (!isPermanent)
             {
-                transform.localPosition = offPosition;
-                transform.localRotation = offRotation;
                 ActivateFallingEdge();
             }
         }

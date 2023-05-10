@@ -12,18 +12,12 @@ public class Handle : InteractableResponse
     public enum Direction { LEFT, RIGHT }
     [SerializeField] public Direction direction;
 
-    private void OnValidate()
-    {
-        pressDuration = 0;
-    }
-
     public override void Interact()
     {
         base.Interact();
         if (!isActive)
         {
-            transform.localPosition = onPosition;
-            transform.localRotation = onRotation;
+            SetPos();
 
             PullObjects();
 
@@ -31,8 +25,7 @@ public class Handle : InteractableResponse
         }
         else
         {
-            transform.localPosition = offPosition;
-            transform.localRotation = offRotation;
+            SetPos();
         }
     }
 
@@ -55,7 +48,7 @@ public class Handle : InteractableResponse
     IEnumerator ButtonPress()
     {
         yield return new WaitForSeconds(pressDuration);
-
+        SetPos();
         isActive = false;
     }
 }

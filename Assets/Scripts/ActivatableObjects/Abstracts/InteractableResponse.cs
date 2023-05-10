@@ -19,6 +19,7 @@ public abstract class InteractableResponse : Interactable
 
     protected void ActivateFallingEdge()
     {
+        SetPos();
         if (fallingEdgeTargets != null)
         {
             foreach (GameObject gameObject in fallingEdgeTargets)
@@ -31,6 +32,7 @@ public abstract class InteractableResponse : Interactable
 
     protected void ActivateRisingEdge()
     {
+        SetPos();
         if (risingEdgeTargets != null)
         {
             foreach (GameObject gameObject in risingEdgeTargets)
@@ -69,6 +71,22 @@ public abstract class InteractableResponse : Interactable
         if (fallingEdgeTargets != null)
         {
             fallingEdgeTargets.Add(objectToAdd);
+        }
+    }
+
+    protected void SetPos()
+    {
+        if (isActive)
+        {
+            transform.localPosition = offPosition;
+            transform.localRotation = offRotation;
+            transform.localScale = offScale;
+        }
+        else
+        {
+            transform.localPosition = onPosition;
+            transform.localRotation = onRotation;
+            transform.localScale = onScale;
         }
     }
 }
