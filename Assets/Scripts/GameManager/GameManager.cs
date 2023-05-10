@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) 
+        if (instance == null)
         {
             instance = this;
         }
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         {
             toadsToSave = toadsEarnedNow;
         }
-        SaveData(timeToSave, toadsToSave);
+        //SaveData(timeToSave, toadsToSave);
     }
 
     void SaveData(double time, int toads)
