@@ -109,6 +109,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            ReturnToMenu();
+        }
         if (!isLevelComplete)
         {
             currentTime = DateTime.UtcNow;

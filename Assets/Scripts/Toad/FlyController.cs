@@ -23,6 +23,10 @@ public class FlyController : MonoBehaviour
             float yMovement = Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
             //moves the flies
             transform.Translate(xMovement, yMovement, 0, Space.World);
+            if (Input.GetKey(KeyCode.T))
+            {
+                transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
+            }
         }
     }
 }
